@@ -1,0 +1,14 @@
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\FirstApplication\bin\Debug\FirstApplication.exe.config
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\FirstApplication\bin\Debug\FirstApplication.exe
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\FirstApplication\bin\Debug\FirstApplication.pdb
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\FirstApplication\obj\Debug\FirstApplication.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\FirstApplication\obj\Debug\MainWindow.g.cs
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\FirstApplication\obj\Debug\App.g.cs
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\FirstApplication\obj\Debug\FirstApplication_MarkupCompile.cache
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\FirstApplication\obj\Debug\FirstApplication_MarkupCompile.lref
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\FirstApplication\obj\Debug\MainWindow.baml
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\FirstApplication\obj\Debug\FirstApplication.g.resources
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\FirstApplication\obj\Debug\FirstApplication.Properties.Resources.resources
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\FirstApplication\obj\Debug\FirstApplication.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\FirstApplication\obj\Debug\FirstApplication.exe
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\FirstApplication\obj\Debug\FirstApplication.pdb
