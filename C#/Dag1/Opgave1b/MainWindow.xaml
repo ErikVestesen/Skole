@@ -1,0 +1,22 @@
+﻿<Window x:Class="Opgave1b.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Opgave1b"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="537">
+    <StackPanel  Width="530">
+        <Label HorizontalAlignment="Left" Content="Guessing Game" Margin="7,5,0,0" RenderTransformOrigin="0.495,2.219"/>
+        <StackPanel Background="LightGreen" Height="273" Margin="10,5,9.6,5">
+            <Label HorizontalAlignment="Left" VerticalAlignment="Center" Content="Label1" Margin="5" RenderTransformOrigin="0.495,2.219"/>
+            <StackPanel  Background="LightYellow" Orientation="Horizontal" Height="60" >
+                <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="Your guess:" />
+                <TextBox HorizontalAlignment="Center" Margin="0,23,15,17" VerticalAlignment="Center" Text="" Width="115" Height="20"/>
+                <Button  HorizontalAlignment="Center" Content="Make guess" VerticalAlignment="Center" Width="92"/>
+            </StackPanel>
+            <Label VerticalAlignment="Center" Content="Label" Margin="5" />
+            <Button Content="Try again" Padding="5" Margin="10,20,424.4,0"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

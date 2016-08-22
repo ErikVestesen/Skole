@@ -1,0 +1,14 @@
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgave1b\bin\Debug\Opgave1b.exe.config
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgave1b\bin\Debug\Opgave1b.exe
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgave1b\bin\Debug\Opgave1b.pdb
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgave1b\obj\Debug\MainWindow.g.cs
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgave1b\obj\Debug\App.g.cs
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgave1b\obj\Debug\Opgave1b_MarkupCompile.cache
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgave1b\obj\Debug\Opgave1b_MarkupCompile.lref
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgave1b\obj\Debug\MainWindow.baml
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgave1b\obj\Debug\Opgave1b.g.resources
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgave1b\obj\Debug\Opgave1b.Properties.Resources.resources
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgave1b\obj\Debug\Opgave1b.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgave1b\obj\Debug\Opgave1b.exe
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgave1b\obj\Debug\Opgave1b.pdb
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgave1b\obj\Debug\Opgave1b.csprojResolveAssemblyReference.cache
