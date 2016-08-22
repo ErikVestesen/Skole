@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Opgaver"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525" Closing="Window_Closing">
     <Grid>
         <Label x:Name="label" Content="Guess a number between 1 and 100
                " HorizontalAlignment="Left" Margin="28,29,0,0" VerticalAlignment="Top" Width="201"/>
@@ -13,7 +13,7 @@
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="26" Margin="95,80,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="button" Content="Guess" HorizontalAlignment="Left" Margin="235,80,0,0" VerticalAlignment="Top" Width="75" Height="26" Click="button_Click"/>
         <Label x:Name="label2" Content="Too high" HorizontalAlignment="Left" Margin="28,129,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="button1" Content="Try again" HorizontalAlignment="Left" Margin="20,173,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="button1" Content="Try again" HorizontalAlignment="Left" Margin="20,173,0,0" VerticalAlignment="Top" Width="75" Click="button1_Click_1"/>
 
     </Grid>
 </Window>
