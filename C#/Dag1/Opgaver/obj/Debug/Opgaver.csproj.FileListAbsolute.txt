@@ -1,0 +1,14 @@
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgaver\bin\Debug\Opgaver.exe.config
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgaver\bin\Debug\Opgaver.exe
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgaver\bin\Debug\Opgaver.pdb
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgaver\obj\Debug\Opgaver.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgaver\obj\Debug\MainWindow.g.cs
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgaver\obj\Debug\App.g.cs
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgaver\obj\Debug\Opgaver_MarkupCompile.cache
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgaver\obj\Debug\Opgaver_MarkupCompile.lref
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgaver\obj\Debug\MainWindow.baml
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgaver\obj\Debug\Opgaver.g.resources
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgaver\obj\Debug\Opgaver.Properties.Resources.resources
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgaver\obj\Debug\Opgaver.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgaver\obj\Debug\Opgaver.exe
+C:\Users\User\Desktop\Erik\Skole\C#\Dag1\Opgaver\obj\Debug\Opgaver.pdb
