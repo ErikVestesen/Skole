@@ -12,7 +12,7 @@
             <Label HorizontalAlignment="Left" VerticalAlignment="Center" Content="Label1" Margin="5" RenderTransformOrigin="0.495,2.219"/>
             <StackPanel  Background="LightYellow" Orientation="Horizontal" Height="60" >
                 <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="Your guess:" />
-                <TextBox HorizontalAlignment="Center" Margin="0,23,15,17" VerticalAlignment="Center" Text="" Width="115" Height="20"/>
+                <TextBox HorizontalAlignment="Center" Margin="0,17,15,17" VerticalAlignment="Center" Text="" Width="115" Height="26"/>
                 <Button  HorizontalAlignment="Center" Content="Make guess" VerticalAlignment="Center" Width="92"/>
             </StackPanel>
             <Label VerticalAlignment="Center" Content="Label" Margin="5" />
