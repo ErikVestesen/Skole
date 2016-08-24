@@ -8,11 +8,11 @@
         Title="MainWindow" Height="500.932" Width="630.333" Loaded="Window_Loaded">
     <StackPanel Margin="5" Orientation="Vertical">
         <StackPanel Margin="5,5,5.4,5" Height="260" Orientation="Horizontal">
-            <ListBox Name="patter" Margin="5,5,5,4.8" Width="188"/>
+            <ListBox Name="patter" Margin="5,5,5,4.8" Width="188" SelectionChanged="patter_SelectionChanged"/>
             <StackPanel Orientation="Vertical" Margin="25,5,5,4.8" Width="204">
-                <Button Margin="37,5,48,5" Content="Add"/>
-                <Button Margin="37,5,48,5" Content="Delete first"/>
-                <Button Margin="37,5,48,5" Content="Delete last"/>
+                <Button Margin="37,5,48,5" Content="Add" Click="Button_Click"/>
+                <Button Margin="37,5,48,5" Content="Delete first" Click="Button_Click_1"/>
+                <Button Margin="37,5,48,5" Content="Delete last" Click="Button_Click_2"/>
             </StackPanel>
         </StackPanel>
         <StackPanel Height="152" Margin="5,5,5.4,5">
@@ -29,9 +29,9 @@
                 <Label x:Name="label" Margin="5" Content="First name" Grid.Row="0"/>
                 <Label x:Name="label1" Margin="5" Content="Last name" Grid.Row="1"/>
                 <Label x:Name="label2" Margin="5" Content="Year of birth" Grid.Row="2"/>
-                <TextBox x:Name="txtboxFName" Margin="5" Grid.Column="1"  Grid.Row="0" Text=""/>
-                <TextBox x:Name="txtboxLName" Margin="5" Grid.Column="1" Grid.Row="1" Text=""/>
-                <TextBox x:Name="txtboxBirth" Margin="4.6,5.2,350.6,5.2" Grid.Row="2" Text="" Grid.Column="1" />
+                <TextBox x:Name="tBoxFName" Margin="5" Grid.Column="1"  Grid.Row="0" Text=""/>
+                <TextBox x:Name="tBoxLName" Margin="5" Grid.Column="1" Grid.Row="1" Text=""/>
+                <TextBox x:Name="tBoxBirth" Margin="4.6,5.2,350.6,5.2" Grid.Row="2" Text="" Grid.Column="1" />
             </Grid>
         </StackPanel>
     </StackPanel>

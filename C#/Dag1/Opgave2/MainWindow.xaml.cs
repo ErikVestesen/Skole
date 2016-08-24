@@ -30,5 +30,29 @@ namespace Opgave2
             patter.ItemsSource = Service.list;
             patter.DisplayMemberPath = "Cpr";
         }
+
+        private void patter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Person p = (Person)patter.SelectedItem;
+            tBoxFName.Text = p.FirstName;
+            tBoxLName.Text = p.LastName;
+            tBoxBirth.Text = Convert.ToString(p.YearOfBirth);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Service.list.Add(new Person
+            { Cpr = "56789", FirstName = "Bill", LastName = "Doe", YearOfBirth = 1986 });
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Service.list.RemoveAt(0);
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Service.list.RemoveAt(Service.list.Count-1);
+        }
     }
 }
