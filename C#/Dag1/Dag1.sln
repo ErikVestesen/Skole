@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstApplication", "FirstApplication\FirstApplication.csproj", "{9EE02ACB-26F4-4550-99B8-7DF1AAFAF3B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opgaver1a", "Opgaver\Opgaver1a.csproj", "{9F2E695E-6A59-4157-8415-6C708B8E87EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opgave1a", "Opgaver\Opgave1a.csproj", "{9F2E695E-6A59-4157-8415-6C708B8E87EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opgave1b", "Opgave1b\Opgave1b.csproj", "{1927DA4D-52BB-44D2-A4C5-2229BD92477C}"
 EndProject
