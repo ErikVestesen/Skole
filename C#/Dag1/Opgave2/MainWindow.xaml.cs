@@ -47,12 +47,14 @@ namespace Opgave2
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            if(Service.list.Count > 0)
             Service.list.RemoveAt(0);
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Service.list.RemoveAt(Service.list.Count-1);
+            if (Service.list.Count > 0)
+                Service.list.RemoveAt(Service.list.Count-1);
         }
     }
 }
