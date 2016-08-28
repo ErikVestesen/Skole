@@ -8,7 +8,7 @@ namespace Opgave4 {
     class Program {
         static void Main(string[] args)
         {
-            Person p = new Person {CPR = "1234567891" };
+            Person p = new Person();
 
             Console.WriteLine(p.CPR = "1234567890");
             Console.WriteLine(p.CPR = "123456789");

@@ -10,14 +10,12 @@ using CPRException;
 namespace Opgave4
 {
    public class Person {
-        //public DateTime birthday { get; }
-
         private string cpr;
         public string CPR
         {
             get
             {
-                return cpr;
+                return this.cpr;
             }
             set
             {
@@ -29,6 +27,7 @@ namespace Opgave4
                                 throw new Exception("BOGSTAV");
                             }
                         }
+                        this.cpr = value;
                     } else {
                         throw new Exception("DER MÅ KUN VÆRE 10 TAL I, DIN HAT");
                     }
