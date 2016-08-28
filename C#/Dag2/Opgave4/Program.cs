@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace Opgave4 {
     class Program {
-        static void Main(string[] args) {
-        }
+        static void Main(string[] args)
+        {
+            Person p = new Person {CPR = "1234567891" };
 
-        void test() {
-
-            Person p1 = new Person { Name = "Arne" };
-            Person p2 = new Person { Name = "Sofus", Height = 174 };
-            Person p3 = new Person { Name = "Josephine", Weight = 54 };
+            Console.WriteLine(p.CPR = "1234567890");
+            Console.WriteLine(p.CPR = "123456789");
+            Console.ReadLine();
         }
     }
 }

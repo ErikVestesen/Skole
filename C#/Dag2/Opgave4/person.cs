@@ -10,28 +10,31 @@ using CPRException;
 namespace Opgave4
 {
    public class Person {
-        //private string cpr;
-        //private DateTime birthday;
-        string Name { get; set; }
-        int Height { get; set; }
+        //public DateTime birthday { get; }
 
-        //DateTime birthday { get; }
-        //string CPR {
-        //    get { return CPR; }
-        //    set {
-        //        if (CPR.Length == 10 || !CPR.Any(char.IsLetter))
-        //        {
-        //            CPR = value;
-        //        } else {
-        //            throw new Exception();
-        //        }
-        //    }
-        //}
-
-        //public Person(string cpr, DateTime birthday) {
-        //    this.CPR = cpr;
-        //    this.birthday = birthday;
-        //}
-       
+        private string cpr;
+        public string CPR
+        {
+            get
+            {
+                return cpr;
+            }
+            set
+            {
+                try
+                {
+                    if (value.Length == 10) {
+                        foreach (char i in value) {
+                            if (Char.IsLetter(i)) {
+                                throw new Exception("BOGSTAV");
+                            }
+                        }
+                    } else {
+                        throw new Exception("DER MÅ KUN VÆRE 10 TAL I, DIN HAT");
+                    }
+                }
+                catch (Exception e) { System.Diagnostics.Debug.WriteLine(e); }
+            }
+        }
     }
 }
