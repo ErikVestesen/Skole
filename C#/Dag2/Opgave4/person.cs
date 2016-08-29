@@ -10,30 +10,40 @@ using CPRException;
 namespace Opgave4
 {
    public class Person {
+        private DateTime birthday;
         private string cpr;
-        public string CPR
-        {
-            get
-            {
-                return this.cpr;
+
+        public DateTime Birthday {
+            get;
+        }
+        public string CPR {
+            get {
+                return cpr;
             }
-            set
-            {
-                try
-                {
-                    if (value.Length == 10) {
-                        foreach (char i in value) {
-                            if (Char.IsLetter(i)) {
-                                throw new Exception("BOGSTAV");
-                            }
-                        }
-                        this.cpr = value; 
-                    } else {
-                        throw new Exception("DER MÅ KUN VÆRE 10 TAL I, DIN HAT");
-                    }
-                }
-                catch (Exception e) { System.Diagnostics.Debug.WriteLine(e); }
+            set {
+                checkCpr(value);
+                cpr = value;
             }
         }
+
+        private void checkCpr(string input) {
+            if (input.Length != 10) 
+                throw new IllegalCPRException("Length of CPR is not 10");
+
+            try {
+                //Check everything here
+            } catch (Exception e) {}
+        }
+    }
+    
+    public class IllegalCPRException : Exception {
+        public IllegalCPRException() 
+        { }
+        public IllegalCPRException(string message) 
+            : base(message)
+        { }
+        public IllegalCPRException(string message, Exception inner)
+            : base(message, inner)
+        { }
     }
 }
