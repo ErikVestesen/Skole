@@ -63,6 +63,7 @@ insert into ansati values('1616161616',2)
 
 --------------------------------------------------------------------------------------------------------------------
 ---Kør som BATCH
+--Opgave 1.4
 --Opgave 1.4a
 SELECT MAX(loen) FROM person;
 --Opgave 1.4b
@@ -71,3 +72,37 @@ SELECT MIN(loen) FROM (SELECT TOP 2 loen FROM person GROUP BY loen ORDER BY loen
 SELECT MIN(loen) FROM (SELECT TOP 3 loen FROM person GROUP BY loen ORDER BY loen DESC) as loen
 
 
+--Opgave 1.5
+--create table  tbl_person (
+--name varchar(25),
+--age int
+--);
+
+--insert into tbl_person values ('Hans', 15)
+--insert into tbl_person values ('Karl', 20)
+--insert into tbl_person values ('Svend', 10)
+--insert into tbl_person values ('Knud', 25)
+--insert into tbl_person values ('Per', 11)
+--insert into tbl_person values ('Per', 9)
+--insert into tbl_person values ('Per', 31)
+--insert into tbl_person values ('Per', 1)
+
+SELECT CASE 
+         WHEN age < 10 THEN '0-9' 
+         WHEN age < 20 THEN '10-19' 
+		 WHEN age < 30 THEN '20-29' 
+		 WHEN age < 40 THEN '30-39' 
+		 WHEN age < 50 THEN '40-49' 
+         ELSE '50+' 
+       END AS age, 
+       COUNT(*) AS 'no. of persons'
+FROM tbl_person
+GROUP BY 
+	   CASE 
+         WHEN age < 10 THEN '0-9' 
+         --WHEN age < 20 THEN '10-19' 
+		 WHEN age < 30 THEN '20-29' 
+		 WHEN age < 40 THEN '30-39' 
+		 WHEN age < 50 THEN '40-49' 
+         ELSE '50+' 
+       END

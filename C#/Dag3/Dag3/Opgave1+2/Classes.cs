@@ -29,8 +29,12 @@ namespace Opgave1
 
         public Time(int hour, int minute)
         {
-            if (hour < 0 || hour > 23 || minute < 0 || minute > 59)
-                throw new Exception("din hat");
+            //if (hour < 0 || hour > 23 || minute < 0 || minute > 59)
+            //    throw new Exception("din hat");
+            if (hour > 23)
+                hour -= 24;
+            else if (hour < 0)
+                hour += 24;
             this.minute = minute + 60 * hour;
         }
 
@@ -48,15 +52,27 @@ namespace Opgave1
         {
             int hour = minute / 60;
             int m = minute % 60;
-            return hour + ":" + m;
+            string res = hour + ":" + m;
+            if (m == 0)
+                res = hour + ":00";
+            if (res.Length == 4)
+                res = "0" + res;
+            return res;
         }
 
+        //Opgave 2
+        public static Time operator +(Time t1, Time t2) {
+            int minutter = t1.minute + t2.minute;
+            if (minutter > 1439)
+                minutter -= 1440;
+            return new Time(minutter / 60, minutter%60);
+        }
 
-        public static Time operator +(Time t1, Time t2)
-        {
-
-
-            return t1;
+        public static Time operator -(Time t1, Time t2) {
+            int minutter = t1.minute - t2.minute;
+            if (minutter < 0)
+                minutter += 1440;
+          return new Time(minutter / 60, minutter%60);
         }
     }
 }

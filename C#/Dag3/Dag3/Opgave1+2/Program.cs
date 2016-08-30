@@ -17,6 +17,12 @@ namespace Opgave1
             Console.WriteLine(t1.ToString());
             Console.WriteLine(t2.ToString());
             Console.ReadLine();
+
+            Console.WriteLine(new Time("10:20") + new Time("11:10"));
+            Console.WriteLine(new Time("22:30") + new Time("04:10"));
+            Console.WriteLine(new Time("16:30") - new Time("06:20"));
+            Console.WriteLine(new Time("11:20") - new Time("13:20"));
+            Console.ReadLine();
         }
     }
 }
