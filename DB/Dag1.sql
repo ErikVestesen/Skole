@@ -71,6 +71,11 @@ SELECT MIN(loen) FROM (SELECT TOP 2 loen FROM person GROUP BY loen ORDER BY loen
 --Opgave 1.4c
 SELECT MIN(loen) FROM (SELECT TOP 3 loen FROM person GROUP BY loen ORDER BY loen DESC) as loen
 
+--Could have done
+declare @maxInt;
+declare @name;
+select top 3 @maxint = loen, @name = navn
+from person order by loen desc
 
 --Opgave 1.5
 --create table  tbl_person (
@@ -100,9 +105,15 @@ FROM tbl_person
 GROUP BY 
 	   CASE 
          WHEN age < 10 THEN '0-9' 
-         --WHEN age < 20 THEN '10-19' 
+         WHEN age < 20 THEN '10-19' 
 		 WHEN age < 30 THEN '20-29' 
 		 WHEN age < 40 THEN '30-39' 
 		 WHEN age < 50 THEN '40-49' 
          ELSE '50+' 
        END
+
+--Use while
+
+
+
+
