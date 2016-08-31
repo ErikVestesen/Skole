@@ -49,7 +49,7 @@ namespace Opgave6
             GrowableArray<DateTime> doubleG = new GrowableArray<DateTime>();
             doubleG[0] = d1;
             doubleG[4] = d1;
-            doubleG[22] = d2;
+            doubleG[22] = d2; 
             Console.WriteLine(doubleG[0]);
             Console.WriteLine(doubleG[4]);
             Console.WriteLine(doubleG[22]);
