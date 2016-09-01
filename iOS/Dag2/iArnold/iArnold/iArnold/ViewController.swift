@@ -19,7 +19,6 @@ class ViewController: UIViewController {
     
     var soundPlayer = AVAudioPlayer()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
        
