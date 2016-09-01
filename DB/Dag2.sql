@@ -56,7 +56,7 @@ while @@FETCH_STATUS != -1
 	end
 close p
 deallocate p
-if((@gradeSum*1.0)/5 > 5.5)
+if((@gradeSum*1.0)/5 > 5.5) -- and sum af de to laveste karaktere + snittet af resten skal være >= 13
 set @res = 'passed'
 else 
 set @res = 'failed'
