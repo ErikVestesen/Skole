@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         let tapGesture1Click = UITapGestureRecognizer(target: self, action: aSelector)
         tapGesture1Click.numberOfTapsRequired = 1
         view.addGestureRecognizer(tapGesture1Click)
-        
+        	
         
         reDisplay()
     }
