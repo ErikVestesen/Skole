@@ -44,6 +44,10 @@ BEGIN
 declare @res char(15)
 declare @gradeSum int
 set @gradeSum = 0.0
+declare @lowestFirst int
+declare @lowesttwo int
+set @lowestFirst = 13
+set @lowestFirst = 13
 declare p cursor
 for select grade from grades where studentno = @studentno
 declare @grade int
@@ -51,17 +55,24 @@ open p
 fetch p into @grade
 while @@FETCH_STATUS != -1
 	begin
+		if(@grade < @lowestFirst)
+		set @lowestFirst = @grade
+		else if(@grade < @lowesttwo AND @lowestFirst < @grade)
+		set @lowesttwo = @grade
+
 		set @gradeSum = @gradeSum + @grade
 		fetch p into @grade
 	end
 close p
 deallocate p
-if((@gradeSum*1.0)/5 > 5.5) -- and sum af de to laveste karaktere + snittet af resten skal være >= 13
-set @res = 'passed'
+if((@gradeSum*1.0)/5 > 5.5)
+set @res = 'passed1'
 else 
 set @res = 'failed'
---select @res = (@gradeSum*1.0)/5
-    
+if (3456+((@gradeSum-(@lowestTwo+@lowestFirst) / 3)) >= 13) 
+set @res = 'passed2'
+--else 
+--set @res = 'failed'
 RETURN @res    
 END 
 go
