@@ -9,9 +9,22 @@ namespace Opgave4 {
         static void Main(string[] args)
         {
             Person p = new Person();
+            try
+            {
+                Console.WriteLine(p.CPR = "1234567890");
+                Console.WriteLine(p.CPR = "1234567");
+                
+            }
+            catch (IllegalCPRException e) {
+                Console.WriteLine(e.Message);
+            }
 
-            Console.WriteLine(p.CPR = "1234567890");
-            Console.WriteLine(p.CPR = "123456789");
+            try
+            {
+                Console.WriteLine(p.CPR = "123WWW6789");
+            } catch (IllegalCPRException e) {
+                Console.WriteLine(e.Message);
+            }
             Console.ReadLine();
         }
     }

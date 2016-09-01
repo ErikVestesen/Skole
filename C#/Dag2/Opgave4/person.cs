@@ -4,9 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-using CPRException;
-
 namespace Opgave4
 {
    public class Person {
@@ -29,10 +26,13 @@ namespace Opgave4
         private void checkCpr(string input) {
             if (input.Length != 10) 
                 throw new IllegalCPRException("Length of CPR is not 10");
-
-            try {
-                //Check everything here
-            } catch (Exception e) {}
+            else {
+                foreach (char x in input) {
+                    if (!Char.IsDigit(x)) {
+                        throw new IllegalCPRException("CPR may only contain numbers");
+                    }
+                }
+            }
         }
     }
     
