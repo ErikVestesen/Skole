@@ -26,6 +26,8 @@ namespace DelegateEks3
             temp += rnd.Next(11) - 5;
             pressure += rnd.Next(17) - 8;
             wind += rnd.Next(11) - 5;
+            if (wind < 0)
+                wind = 5;
             if (messures != null) messures(temp, wind, pressure);
         }
         // mål ny temperatur og adviser alle lytterer gennem delegate variablen tempChanged
@@ -71,6 +73,15 @@ namespace DelegateEks3
             Console.Write("MinMax måler nr. " + displayNr + ":  ");
             Console.WriteLine("Temperatur= {0:D}, Min= {1:F1}, Max= {2:F1}", currentTemp, minTemp, maxTemp);
         }
+    }
+
+    public class DisplayAll
+    {
+        public void Display(int temp, int wind, int pressure)
+        {
+            Console.WriteLine("Temperatur = {0:D}, Wind = {1:F1}, Pressure ={2:F2})", temp, wind, pressure);
+        }
+
     }
 
     public class MiddelDisplay
@@ -135,6 +146,15 @@ namespace DelegateEks3
             weatherStation.getNewTemp(); Console.WriteLine();
             weatherStation.getNewTemp(); Console.WriteLine();
 
+            DisplayAll da = new DisplayAll();
+            weatherStation.messures += new Messures(da.Display);
+
+            weatherStation.GetWeatherData(); Console.WriteLine();
+            weatherStation.GetWeatherData(); Console.WriteLine();
+            weatherStation.GetWeatherData(); Console.WriteLine();
+            weatherStation.GetWeatherData(); Console.WriteLine();
+            weatherStation.GetWeatherData(); Console.WriteLine();
+            weatherStation.GetWeatherData(); Console.WriteLine();
             // vent Enter tryk
             Console.ReadLine();
 
