@@ -6,18 +6,28 @@ namespace DelegateEks3
 {
     public delegate void goAlarm(int temp);
     public delegate void SendTemp(int newtemp);
+    public delegate void Messures(int temp, int wind, int pressure);
 
     // vejrstation der måler temperatur og adviserer alle lyttere
     // svarer til Observable i Observer-pattern
     public class WeatherStation
     {
         // event variabel
+        public event Messures messures;
         public event SendTemp sendEvent;
         public event goAlarm alarm;
 
         int temp = 20;
+        int pressure = 940;
+        int wind = 0;
         Random rnd = new Random();
 
+        public void GetWeatherData() {
+            temp += rnd.Next(11) - 5;
+            pressure += rnd.Next(17) - 8;
+            wind += rnd.Next(11) - 5;
+            if (messures != null) messures(temp, wind, pressure);
+        }
         // mål ny temperatur og adviser alle lytterer gennem delegate variablen tempChanged
         public void getNewTemp()
         {
