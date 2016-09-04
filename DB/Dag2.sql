@@ -46,29 +46,64 @@ returns Char(15)
 as
 BEGIN
 	declare @avg decimal
-	select @avg = (select AVG(grade * 1.0) from grades where studentno = @studentno)
+	set @avg = (select AVG(grade * 1.0) from grades where studentno = @studentno)
 	declare @twoLowSum decimal
-	select @twoLowSum = (
+	set @twoLowSum = (
 			select SUM(grade) 
 			from (
 				select top 2 grade from grades where studentno = @studentno order by grade
 			) as something
 	)
 	declare @res char(15)
-	select @res = 'Passed'
+	set @res = 'Passed'
 
 	if @avg < 5.5
-		select @res = 'Failed'
+		set @res = 'Failed'
 
 	if @res = 'Passed'
 	begin
 		if @avg + @twoLowSum < 13
-			select @res = 'Failed'
+			set @res = 'Failed'
 	end
 
 	RETURN @res    
 END
 
 go
-select name,dbo.passedCheck(studentno)
+select name Navn,dbo.passedCheck(studentno) Resultat
 from student
+
+
+--Opgave 1.8
+--Exercise 1.8	
+
+--Laver temp table
+CREATE TABLE #Temp (
+tableName varchar(255),
+nrOfRecords int)
+--cursor
+declare t cursor
+for select name from (select name from sysobjects where type = 'u' and category = 0) as myTables
+declare @name varchar(255)
+open t
+fetch t into @name
+while @@fetch_status != -1
+begin
+	if @name not like '%Temp%'
+	begin
+		execute ('
+			declare @count int
+			select @count = (select COUNT(*) FROM ' + @name + ')
+			insert into #Temp values('''+@name+''', @count)
+		')
+	end
+
+	fetch t into @name
+end
+close t
+deallocate t
+--selecter mit temp table med dataene
+select * from #Temp
+--sletter temp table
+drop table #Temp
+--slut
