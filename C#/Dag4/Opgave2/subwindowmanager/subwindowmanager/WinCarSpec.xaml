@@ -1,0 +1,15 @@
+﻿<Window x:Class="subwindowmanager.WinCarSpec"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WinCarSpec" Height="300" Width="300">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="30"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <Label Name="lblId" Content="- -" Height="30"/>
+    <TextBlock Name="tBlock" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Stretch"
+               Margin="5,5,4.6,5" Grid.Row="1"/>
+
+  </Grid>
+</Window>

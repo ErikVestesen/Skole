@@ -40,43 +40,35 @@ insert into grades values (4,10)
 go
 drop function passedCheck
 go
+
 create function passedCheck (@studentno int)
 returns Char(15)
 as
 BEGIN
-declare @res char(15)
-declare @gradeSum int
-set @gradeSum = 0.0
-declare @lowestFirst int
-declare @lowesttwo int
-set @lowestFirst = 13
-set @lowesttwo = 13
-declare p cursor
-for select grade from grades where studentno = @studentno
-declare @grade int
-open p 
-fetch p into @grade
-while @@FETCH_STATUS != -1
-	begin
-		if(@grade < @lowestFirst)
-		set @lowestFirst = @grade
-		else if(@grade < @lowesttwo AND @lowestFirst <= @lowesttwo)
-		set @lowesttwo = @grade
+	declare @avg decimal
+	select @avg = (select AVG(grade * 1.0) from grades where studentno = @studentno)
+	declare @twoLowSum decimal
+	select @twoLowSum = (
+			select SUM(grade) 
+			from (
+				select top 2 grade from grades where studentno = @studentno order by grade
+			) as something
+	)
+	declare @res char(15)
+	select @res = 'Passed'
 
-		set @gradeSum = @gradeSum + @grade
-		fetch p into @grade
+	if @avg < 5.5
+		select @res = 'Failed'
+
+	if @res = 'Passed'
+	begin
+		if @avg + @twoLowSum < 13
+			select @res = 'Failed'
 	end
-close p
-deallocate p
-if((@gradeSum*1.0)/5 > 5.5 and (@lowestFirst+@lowesttwo+(((@gradeSum*1.0-@lowesttwo-@lowestFirst)*1.0) / 3.0)) >= 13)
-set @res = 'passed'
-else 
-set @res = 'failed'
-RETURN @res    
-END 
+
+	RETURN @res    
+END
+
 go
 select name,dbo.passedCheck(studentno)
-from student  
-
---Actual avg
-Select avg(grade*1.0) Gennemsnit,name from student s join grades g on g.studentno = s.studentno group by name
+from student
