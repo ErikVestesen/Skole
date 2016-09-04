@@ -16,14 +16,15 @@ using System.Windows.Shapes;
 
 namespace subwindowmanager
 {
-
+    public delegate void CarSelectionChanged(string carId);
   /// <summary>
   /// Interaction logic for MainWindow.xaml
   /// </summary>
   public partial class MainWindow : Window
   {
+    public event CarSelectionChanged carSelectedChanged;
 
-    public MainWindow()
+        public MainWindow()
     {
       InitializeComponent();
 
@@ -40,11 +41,7 @@ namespace subwindowmanager
     {
       if (lBoxCars.SelectedItem != null)
       {
-                WinCarImage win;
-                if (WinCarImage.IsActiveProperty == null)
-                    win = new WinCarImage();
-                else
-                    win = WinCarImage.GetWindow;
+        WinCarImage win = new WinCarImage();
         win.Owner = this;
 
         string id = (string)lBoxCars.SelectedValue;
@@ -81,9 +78,10 @@ namespace subwindowmanager
       lBoxCars.SelectedItem = null;
     }
 
-        private void lBoxCars_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
+    private void lBoxCars_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+            //string id = (string)(sender as ListBox).SelectedValue;
+            carSelectedChanged?.Invoke((string)(sender as ListBox).SelectedValue);
         }
     }
 }
