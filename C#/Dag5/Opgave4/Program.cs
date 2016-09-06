@@ -14,14 +14,6 @@ namespace Opgave4
         {
             return "Navn: " + Name + ", Published: " +Published.Year;
         }
-
-        public void WhenPublished(Predicate<Book> bog, List<Book> bøger) {
-            foreach(Book b in bøger) {
-                if(bog(b)){
-                    Console.WriteLine(b);
-                }
-            }
-        }
     }
    
 
