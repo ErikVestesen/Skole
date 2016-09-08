@@ -20,7 +20,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="89w-DG-dIF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1450" y="-173"/>
+            <point key="canvasLocation" x="-148" y="207"/>
         </scene>
         <!--Add To-Do Item-->
         <scene sceneID="feP-5b-WZ2">
@@ -63,7 +63,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qDe-GV-n9h" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="4BV-JU-gkT" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1450" y="547"/>
+            <point key="canvasLocation" x="686" y="207"/>
         </scene>
         <!--To-do list-->
         <scene sceneID="sYM-wp-TfP">
@@ -114,7 +114,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3je-5A-REn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="618" y="-173"/>
+            <point key="canvasLocation" x="686" y="-573"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="u8z-Vk-gQ5">
@@ -130,7 +130,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rva-Ir-q2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-114" y="-173"/>
+            <point key="canvasLocation" x="-124" y="-573"/>
         </scene>
     </scenes>
 </document>
