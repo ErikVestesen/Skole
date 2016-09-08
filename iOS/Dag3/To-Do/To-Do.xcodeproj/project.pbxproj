@@ -58,16 +58,40 @@
 		961A508C1D78280F003F338C /* To-Do */ = {
 			isa = PBXGroup;
 			children = (
-				961A508D1D78280F003F338C /* AppDelegate.swift */,
-				961A50911D78280F003F338C /* Main.storyboard */,
+				9645AC901D8159640020E348 /* Model */,
+				9645AC921D8159710020E348 /* View */,
+				9645AC911D81596B0020E348 /* Controller */,
 				961A50941D78280F003F338C /* Assets.xcassets */,
-				961A50961D78280F003F338C /* LaunchScreen.storyboard */,
 				961A50991D78280F003F338C /* Info.plist */,
-				961A509F1D783500003F338C /* TodoListTableViewController.swift */,
-				9645AC8C1D8142D60020E348 /* ToDoItem.swift */,
-				9645AC8E1D8147CD0020E348 /* StateController.swift */,
 			);
 			path = "To-Do";
+			sourceTree = "<group>";
+		};
+		9645AC901D8159640020E348 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9645AC8E1D8147CD0020E348 /* StateController.swift */,
+				9645AC8C1D8142D60020E348 /* ToDoItem.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		9645AC911D81596B0020E348 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				961A508D1D78280F003F338C /* AppDelegate.swift */,
+				961A509F1D783500003F338C /* TodoListTableViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		9645AC921D8159710020E348 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				961A50911D78280F003F338C /* Main.storyboard */,
+				961A50961D78280F003F338C /* LaunchScreen.storyboard */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
