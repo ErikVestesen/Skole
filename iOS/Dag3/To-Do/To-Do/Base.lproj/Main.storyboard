@@ -87,14 +87,14 @@
                             </items>
                         </navigationBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="EIT-L0-LoI" style="IBUITableViewCellStyleDefault" id="oqr-cB-hbh">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="todoitemcell" textLabel="BUa-lH-SE5" style="IBUITableViewCellStyleDefault" id="oqr-cB-hbh" customClass="ToDoItemCell" customModule="To_Do" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oqr-cB-hbh" id="XG6-Vm-2RH">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EIT-L0-LoI">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BUa-lH-SE5">
                                             <rect key="frame" x="15" y="0.0" width="570" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -110,7 +110,7 @@
                             <outlet property="delegate" destination="HKH-1d-Aie" id="oM0-X3-D6w"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="aji-Wg-il2"/>
+                    <navigationItem key="navigationItem" title="Fjern mig." id="dK3-Is-Ako"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3je-5A-REn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

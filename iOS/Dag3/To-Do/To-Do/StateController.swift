@@ -12,13 +12,19 @@ class StateController  {
     
     static let itemsFilePath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! + Config.storageName.rawValue
     
-    private(set) var items = [ToDoItem]()
+    private(set) var items:[ToDoItem] = {
+        if let items = NSKeyedUnarchiver.unarchiveObjectWithFile(StateController.itemsFilePath) as? [ToDoItem] {
+            return items
+        } else {
+            return [ToDoItem]()
+        }
+    }()
     
     func addItem(item: ToDoItem) {
         items.append(item)
     }
     func save() {
-        
+        NSKeyedArchiver.archiveRootObject(self.items, toFile: StateController.itemsFilePath)
     }
     
     enum Config: String {

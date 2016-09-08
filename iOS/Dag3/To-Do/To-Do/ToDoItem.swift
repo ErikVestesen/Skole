@@ -20,13 +20,19 @@ class ToDoItem: NSObject,NSCoding {
     }
     
     //coder external name, ADecoder internal name.
+    /* Decoding a ToDoITem and instantiate it
+    It can fail, so the ? at the end of the init */
     required init?(coder ADecoder: NSCoder) {
         name = ADecoder.decodeObjectForKey(Keys.Name.rawValue) as! String
         creationDate = ADecoder.decodeObjectForKey(Keys.CreationDate.rawValue) as! NSDate
         completed = ADecoder.decodeObjectForKey(Keys.Completed.rawValue) as! Bool
     }
     
-    //Encodes the instances of the class as a string for easier storing on disc - this func is not responsible for storing on disc.
+    /*
+    Encodes the instances of the class as a string for easier storing on disc - this func is not responsible for storing on disc.
+    My ToDoItem should be able to encode itself, so others can store it
+    This one is not required by the protocol, but if you provide it It will be called by someone
+    */
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(name,forKey: Keys.Name.rawValue)
         aCoder.encodeObject(creationDate,forKey: Keys.CreationDate.rawValue)

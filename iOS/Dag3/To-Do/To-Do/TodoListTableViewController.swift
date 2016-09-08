@@ -13,6 +13,8 @@ import UIKit
 
 class TodoListTableViewController: UITableViewController {
     
+    var stateController : StateController?
+    
     @IBAction func unwindToList(segue : UIStoryboardSegue){
         
     }
