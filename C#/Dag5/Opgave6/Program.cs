@@ -15,11 +15,16 @@ namespace Opgave6
             var query = from tal in numbers
                         where tal.ToString().Length == 2
                         orderby tal //descending // <-- opgave b
-                        select tal;
-
+                        //select tal // opgave a-c
+                        select (tal % 2 == 0 ? tal + " lige" : tal + " ulige"); // opgave d
             Console.WriteLine();
-            foreach(int k in query) {
-                Console.WriteLine(k);
+            foreach (var k in query) {
+                    bool jajajajaja = false;
+                    if (Convert.ToInt32(k.Substring(0,1)) % 2 == 0) {
+                        jajajajaja = true;
+                    }
+                    Console.WriteLine("Tal={0}, Lige={1}", k.Substring(0,2),jajajajaja);
+               
             }
             Console.ReadLine();
 
