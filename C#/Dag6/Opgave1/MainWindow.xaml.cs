@@ -17,32 +17,38 @@ using System.Windows.Shapes;
 
 namespace Opgave1
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
-            comboBox.ItemsSource = countries;
             InitializeComponent();
         }
 
-        public List<string> countries {
+        public List<object> ansatte
+        {
+            get
+            {
+                return getPersonsByCountry();
+            }
+        }
+
+        public List<object> countries {
             get
             {
                 return CountryList();
             }
         }
 
-        public List<string> CountryList()
+        public List<object> CountryList()
         {
-            List<string> result = new List<string>();
+            List<object> result = new List<object>();
 
-             
-                string connStr = @"Data Source=localhost\sqlExpress;" + "Integrated security=true; " + "database=Northwind";
+                string connStr = @"Data Source=localhost\sqlExpress;"
+                + "Integrated security=true; "
+                + "database=Northwind";
+
             SqlConnection con = new SqlConnection(connStr);
-                string sql = "SELECT c.Country FROM Customers c";
+                string sql = "SELECT DISTINCT c.Country FROM Customers c";
                 SqlCommand cmd = new SqlCommand(sql, con);
             try
             {
@@ -57,7 +63,9 @@ namespace Opgave1
             }
             catch (Exception ex)
             {
-                // handled exception 
+                Console.WriteLine(ex);
+                Console.ReadLine();
+
             }
             finally
             {
@@ -67,6 +75,56 @@ namespace Opgave1
 
 
                 return result;
+        }
+
+
+        private List<object> getPersonsByCountry()
+        {
+            //object value = cbox_land.SelectedValue
+            List<object> result = new List<object>();
+
+            string connStr = @"Data Source=localhost\sqlExpress;"
+                + "Integrated security=true; "
+                + "database=Northwind";
+
+            SqlConnection con = new SqlConnection(connStr);
+            string sql = "SELECT c.Country FROM Customers c WHERE c.Country = " + cbox_land.SelectedValue;
+            SqlCommand cmd = new SqlCommand(sql, con);
+            try
+            {
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    result.Add(reader[0].ToString());
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                Console.ReadLine();
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+            }
+            return result;
+
+        }
+
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            cbox_land.ItemsSource = countries;
+            cbox_land.SelectedValue = "Denmark";
+            lbox_ansatte.ItemsSource = ansatte;
+        }
+
+        private void cbox_land_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            lbox_ansatte.ItemsSource = ansatte;
         }
     }
 }
