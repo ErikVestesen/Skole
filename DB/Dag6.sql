@@ -11,3 +11,7 @@ Select navn, firmanavn from total
 
 -- create clustered index test on person(navn)
 -- select * from person where navn like 'a%' ==> seek, !scan (CTRL + L)
+
+-- reduction factor = hvor mange % data opfylder betingelsen
+--Interessant begreb ved nonclustered index
+--Bruger kun nonclustered index, hvis reduction factor < ca 1%
