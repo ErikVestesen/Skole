@@ -17,7 +17,7 @@
         <Label x:Name="lbl_land" Content="Land" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" d:IsLocked="True"/>
         <Label x:Name="lbl_ansatte" Content="Ansatte" HorizontalAlignment="Left" Margin="10,87,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.292,-0.803" d:IsLocked="True"/>
         <ListBox x:Name="lbox_ansatte" Height="170" Margin="10,118,10.4,0" VerticalAlignment="Top" d:IsHidden="True"/>
-        <TextBlock x:Name="tBlock_ansatte" Margin="10,117,10.4,19.8" TextWrapping="Wrap" Text="TextBlock" Grid.RowSpan="2" d:IsLocked="True"/>
+        <TextBlock x:Name="tBlock_ansatte" Margin="10,117,10.4,19.8" TextWrapping="Wrap" Text="TextBlock" Grid.RowSpan="2"/>
     </Grid>
 </Window>
 
