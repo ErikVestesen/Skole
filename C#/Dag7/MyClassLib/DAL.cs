@@ -1,12 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MyClassLib
 {
-    class DAL
+    public class dal
     {
-    }
+        static string conStr = @"Data Source=localhost\SQLExpress; database=Northwind; Integrated Security=true;";
+        static SqlConnection con = null;
+
+        public static SqlConnection getConnection()
+        {
+            if (con == null)
+                con = new SqlConnection(conStr);
+
+            return con;
+        }
+
+        public static bool CheckConnection()
+        {
+            SqlConnection con = getConnection();
+            try
+            {
+                con.Open();
+                con.Close();
+                return true;
+            }
+            catch (SqlException ex)
+            {
+                return false;
+            }
+        }
+    }
 }

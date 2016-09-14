@@ -25,8 +25,8 @@ drop table varegruppe
 go
 create table varegruppe
 (
-varegruppeid int identity primary key,
-varegruppenavn varchar(40)
+varegruppeid int identity primary key, 
+varegruppenavn varchar(40) --clustered
 )
 create table vare
 (
