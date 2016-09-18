@@ -38,54 +38,10 @@ insert into teams values('lyn','Lyngby',0,0,0,0)
 insert into teams values('sil','Silkeborg',0,0,0,0)
 go
 -- Her indsættes trigger/triggere 
-/*
--- Insert trigger
-create trigger insertTrigger on matches
-for insert, update as
-	declare @homeid char(3) = (select homeid from inserted)
-	declare @outid char(3) = (select outid from inserted)
-	declare @homegoal int = (select homegoal from inserted)
-	declare @outgoal int = (select outgoal from inserted)
-	declare @homepoints int
-	declare @outpoints int
-	-- Calc points
-	if @homegoal > @outgoal			-- Home wins
-	begin
-		set @homepoints = 3
-		set @outpoints = 0
-	end
-	else if @homegoal = @outgoal	-- Draw
-	begin
-		set @homepoints = 1
-		set @outpoints = 1
-	end
-	else							-- Out wins
-	begin
-		set @homepoints = 0
-		set @outpoints = 3
-	end
-
-	-- Update the teams table with the new values
-	-- Home team
-	update teams
-	set nomatches = nomatches + 1,
-	owngoals = owngoals + @homegoal,
-	othergoals = othergoals + @outgoal,
-	points = points + @homepoints
-	where Id = @homeid
-
-	-- Out team
-	update teams
-	set nomatches = nomatches + 1,
-	owngoals = owngoals + @outgoal,
-	othergoals = othergoals + @homegoal,
-	points = points + @outpoints
-	where Id = @outid
--- End insert trigger
-*/
+--Exercise A trigger
 create trigger aTrigger
 on matches 
-for insert
+for insert, update
 as 
 declare @homegoal int = (select homegoal from inserted)
 declare @outgoal int = (select outgoal from inserted)
@@ -104,7 +60,31 @@ declare @outid char(3) = (select outid from inserted)
 	update teams set nomatches += 1, owngoals += @homegoal, othergoals += @outgoal  where Id = @homeid
 	update teams set nomatches += 1, owngoals += @outgoal, othergoals += @homegoal  where Id = @outid
 		
-go   
+go
+
+--Exercise B trigger
+create trigger bTrigger
+on matches 
+for delete, update
+as 
+declare @homegoal int = (select homegoal from deleted)
+declare @outgoal int = (select outgoal from deleted)
+declare @homeid char(3) = (select homeid from deleted)
+declare @outid char(3) = (select outid from deleted)
+
+	if(@homegoal > @outgoal)
+		update teams set points -= 3 where Id = @homeid
+	if (@homegoal < @outgoal) 
+		update teams set points -= 3 where Id = @outid
+	if(@homegoal = @outgoal)
+		begin
+		update teams set points -= 1 where Id = @homeid
+		update teams set points -= 1 where Id = @outid
+		end
+	update teams set nomatches -= 1, owngoals -= @homegoal, othergoals -= @outgoal  where Id = @homeid
+	update teams set nomatches -= 1, owngoals -= @outgoal, othergoals -= @homegoal  where Id = @outid
+		
+go     
 
 
 go
@@ -167,8 +147,15 @@ insert into matches values('vib','fcm',0,0,'2016-08-28')
 --Exercise A Results
 select name Hold, nomatches Kampe, owngoals Mål, othergoals 'Mål scoret på dem', points Point from teams order by points desc
 
---Exercise B
-
 --Exercise C
+go
+Create Procedure SP_OpgaveC(@dato date)
+As
+Begin
+Select * FROM matches WHERE matchdate = @dato
+End
 
+declare @d date;
+set @d = '2015-08-08'
+execute SP_OpgaveC @d
 --Exercise D
