@@ -22,7 +22,7 @@ create table histprice
 itemno int foreign key references item,
 price decimal(7,2),
 fromdate datetime,
-todate datetime
+--todate datetime
 )
 insert into item values
 	('pommes frites'),
@@ -43,17 +43,16 @@ go
 create proc spfindprice
 @day datetime
 as
-select itemname,price
-from item i,histprice h
-where i.itemno = h.itemno and
-(fromdate <= @day and
-@day < todate or
- fromdate <= @day and
-todate is null)
+	select itemname,price
+	from item i,histprice h
+	where i.itemno = h.itemno and fromdate in
+	(select max(fromdate) from histprice where fromdate <= @day and i.itemno = itemno)
 go
 exec spfindprice '2016-01-19'
 go
 -- find the price for one item on a given day using a function
+drop function fufindprice
+go
 create function fufindprice (@day datetime,@itemno int)
 returns decimal(7,2)
 as
@@ -61,13 +60,11 @@ BEGIN
 return (select price
 from histprice 
 where itemno = @itemno and
-(fromdate <= @day and
-@day < todate or
- fromdate <= @day and
-todate is null))
+(fromdate <= @day))
 END     
 go
 select dbo.fufindprice('2016.01.26',2)
+drop proc spupdateprice
 go    
 create proc spupdateprice
 -- assumes itemno already exists 
@@ -75,8 +72,8 @@ create proc spupdateprice
 @newprice decimal(7,2),
 @fromdate datetime
 as
-update histprice set todate = @fromdate where itemno =@itemno and todate is null
-insert into histprice values(@itemno,@newprice,@fromdate,null)
+update histprice set fromdate = @fromdate where itemno =@itemno and @fromdate > fromdate
+insert into histprice values(@itemno,@newprice,@fromdate)
 go
 exec spupdateprice 1,'32.00','2016.2.29'
 
