@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "classlibrary", "classlibrary.csproj", "{F35B8DD0-2586-496C-B36C-2E8461E8A951}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opgave1WPF", "..\Opgave1WPF\Opgave1WPF.csproj", "{8B484251-7C83-4DD6-8EDD-204643A3C6B9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F35B8DD0-2586-496C-B36C-2E8461E8A951}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F35B8DD0-2586-496C-B36C-2E8461E8A951}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F35B8DD0-2586-496C-B36C-2E8461E8A951}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F35B8DD0-2586-496C-B36C-2E8461E8A951}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B484251-7C83-4DD6-8EDD-204643A3C6B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B484251-7C83-4DD6-8EDD-204643A3C6B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B484251-7C83-4DD6-8EDD-204643A3C6B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B484251-7C83-4DD6-8EDD-204643A3C6B9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
