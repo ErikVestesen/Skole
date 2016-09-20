@@ -14,9 +14,31 @@ import UIKit
 class TodoListTableViewController: UITableViewController {
     
     var stateController : StateController?
+    var tableViewDataSource: TableViewDataSource?
+    var tableViewDelegate: TableViewDelegate?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if let stateController = stateController {
+            tableViewDataSource = TableViewDataSource(tableView: tableView, stateController: stateController)
+            tableViewDelegate = TableViewDelegate(tableView: tableView, stateController: stateController)
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let navigationController = segue.destinationViewController as? UINavigationController,
+            let addToDoItemViewController = navigationController.viewControllers.first as? AddToDoItemViewController {
+                addToDoItemViewController.stateController = self.stateController
+        }
+    }
     
     @IBAction func unwindToList(segue : UIStoryboardSegue){
-        
+            
     }
 
 }                               

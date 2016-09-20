@@ -25,7 +25,7 @@
         <!--Add To-Do Item-->
         <scene sceneID="feP-5b-WZ2">
             <objects>
-                <viewController id="Imk-rp-md0" sceneMemberID="viewController">
+                <viewController id="Imk-rp-md0" customClass="TodoListTableViewController" customModule="To_Do" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7n8-Ec-cD6"/>
                         <viewControllerLayoutGuide type="bottom" id="exZ-fu-K6p"/>
@@ -59,6 +59,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="cancelButton" destination="RSK-zM-yyt" id="CFj-a3-vnW"/>
+                        <outlet property="nameTextField" destination="Dh8-Zt-x20" id="4wg-n6-3QY"/>
+                        <outlet property="saveButton" destination="dZC-Eo-YPr" id="bmI-gc-nY0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qDe-GV-n9h" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="4BV-JU-gkT" userLabel="Exit" sceneMemberID="exit"/>
