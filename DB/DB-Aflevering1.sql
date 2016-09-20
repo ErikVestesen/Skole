@@ -1,3 +1,9 @@
+/* READ ME
+HOW IT WORKS:
+
+For at teste C skal A og B udkommenteres, ellers gives skævt resultat - måske virker B ikke?
+
+*/
 drop table matches
 drop table teams
 
@@ -39,53 +45,89 @@ insert into teams values('sil','Silkeborg',0,0,0,0)
 go
 -- Her indsættes trigger/triggere 
 --Exercise A trigger
-create trigger aTrigger
-on matches 
-for insert, update
-as 
-declare @homegoal int = (select homegoal from inserted)
-declare @outgoal int = (select outgoal from inserted)
-declare @homeid char(3) = (select homeid from inserted)
-declare @outid char(3) = (select outid from inserted)
+--create trigger aTrigger
+--on matches 
+--for insert, update
+--as 
+--declare @homegoal int = (select homegoal from inserted)
+--declare @outgoal int = (select outgoal from inserted)
+--declare @homeid char(3) = (select homeid from inserted)
+--declare @outid char(3) = (select outid from inserted)
 
-	if(@homegoal > @outgoal)
-		update teams set points += 3 where Id = @homeid
-	if (@homegoal < @outgoal) 
-		update teams set points += 3 where Id = @outid
-	if(@homegoal = @outgoal)
-		begin
-		update teams set points += 1 where Id = @homeid
-		update teams set points += 1 where Id = @outid
-		end
-	update teams set nomatches += 1, owngoals += @homegoal, othergoals += @outgoal  where Id = @homeid
-	update teams set nomatches += 1, owngoals += @outgoal, othergoals += @homegoal  where Id = @outid
+--	if(@homegoal > @outgoal)
+--		update teams set points += 3 where Id = @homeid
+--	if (@homegoal < @outgoal) 
+--		update teams set points += 3 where Id = @outid
+--	if(@homegoal = @outgoal)
+--		begin
+--		update teams set points += 1 where Id = @homeid
+--		update teams set points += 1 where Id = @outid
+--		end
+--	update teams set nomatches += 1, owngoals += @homegoal, othergoals += @outgoal  where Id = @homeid
+--	update teams set nomatches += 1, owngoals += @outgoal, othergoals += @homegoal  where Id = @outid
 		
-go
+--go
 
 --Exercise B trigger
-create trigger bTrigger
-on matches 
-for delete, update
-as 
-declare @homegoal int = (select homegoal from deleted)
-declare @outgoal int = (select outgoal from deleted)
-declare @homeid char(3) = (select homeid from deleted)
-declare @outid char(3) = (select outid from deleted)
+--create trigger bTrigger
+--on matches 
+--for delete, update
+--as 
+--declare @homegoal int = (select homegoal from deleted)
+--declare @outgoal int = (select outgoal from deleted)
+--declare @homeid char(3) = (select homeid from deleted)
+--declare @outid char(3) = (select outid from deleted)
 
-	if(@homegoal > @outgoal)
-		update teams set points -= 3 where Id = @homeid
-	if (@homegoal < @outgoal) 
-		update teams set points -= 3 where Id = @outid
-	if(@homegoal = @outgoal)
-		begin
-		update teams set points -= 1 where Id = @homeid
-		update teams set points -= 1 where Id = @outid
-		end
-	update teams set nomatches -= 1, owngoals -= @homegoal, othergoals -= @outgoal  where Id = @homeid
-	update teams set nomatches -= 1, owngoals -= @outgoal, othergoals -= @homegoal  where Id = @outid
+--	if(@homegoal > @outgoal)
+--		update teams set points -= 3 where Id = @homeid
+--	else if (@homegoal < @outgoal) 
+--		update teams set points -= 3 where Id = @outid
+--	else
+--		begin
+--		update teams set points -= 1 where Id = @homeid
+--		update teams set points -= 1 where Id = @outid
+--		end
+--	update teams set nomatches -= 1, owngoals -= @homegoal, othergoals -= @outgoal  where Id = @homeid
+--	update teams set nomatches -= 1, owngoals -= @outgoal, othergoals -= @homegoal  where Id = @outid
 		
-go     
+--go     
 
+--Exercise C
+go
+drop proc SP_OpgaveC
+go
+create proc SP_OpgaveC @dato date 
+as
+declare t cursor for 
+select m.homeid, m.outgoal, m.homegoal, m.outid from matches m where m.matchdate <= @dato
+declare @homeid char(3), @outid char(3), @homegoal int, @outgoal int
+open t
+fetch t into @homeid,@outgoal, @homegoal,@outid
+
+
+while @@fetch_status = 0
+begin
+	begin
+			if(@homegoal > @outgoal)
+				update teams set points += 3 where Id = @homeid
+			if (@homegoal < @outgoal) 
+				update teams set points += 3 where Id = @outid
+			if(@homegoal = @outgoal)
+				begin
+				update teams set points += 1 where Id = @homeid
+				update teams set points += 1 where Id = @outid
+				end
+			update teams set nomatches += 1, owngoals += @homegoal, othergoals += @outgoal  where Id = @homeid
+			update teams set nomatches += 1, owngoals += @outgoal, othergoals += @homegoal  where Id = @outid
+	end
+	fetch t into @homeid,@outgoal, @homegoal,@outid
+end
+close t
+deallocate t
+Select distinct hej.Hold, hej.Kampe, hej.Mål, hej.[Mål scoret på dem],hej.Point from (select name Hold, nomatches Kampe, owngoals Mål, othergoals 'Mål scoret på dem', points Point from teams, matches m where m.matchdate <= @dato) as hej  order by 5 desc
+go
+
+--Exercise D
 
 go
 insert into matches values('vib','fcn',0,4,'2016-07-15')
@@ -145,17 +187,12 @@ insert into matches values('aab','agf',2,1,'2016-08-28')
 insert into matches values('vib','fcm',0,0,'2016-08-28')
 --
 --Exercise A Results
-select name Hold, nomatches Kampe, owngoals Mål, othergoals 'Mål scoret på dem', points Point from teams order by points desc
+--select name Hold, nomatches Kampe, owngoals Mål, othergoals 'Mål scoret på dem', points Point from teams order by points desc
 
---Exercise C
-go
-Create Procedure SP_OpgaveC(@dato date)
-As
-Begin
-Select * FROM matches WHERE matchdate = @dato
-End
+--Exercise C Results
 
 declare @d date;
-set @d = '2015-08-08'
+set @d = '2016-08-5'
 execute SP_OpgaveC @d
+
 --Exercise D
