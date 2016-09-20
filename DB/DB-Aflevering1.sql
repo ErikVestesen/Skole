@@ -1,13 +1,17 @@
 /* READ ME
 HOW IT WORKS:
 
+
+Tester B ved at køre aResults, slet et række og så køre aResults igen. Rækken vedrører efb og ob. 
+det ses nemmere når cResults er udkommenteret. 
+
 For at teste C skal A og B udkommenteres, ellers gives skævt resultat - måske virker B ikke?
 
 */
 drop table matches
 drop table teams
 
-
+set nocount on -- remove rows affected in messages
 go
 create table teams
 (
@@ -69,28 +73,33 @@ go
 --go
 
 --Exercise B trigger
---create trigger bTrigger
---on matches 
---for delete, update
---as 
---declare @homegoal int = (select homegoal from deleted)
---declare @outgoal int = (select outgoal from deleted)
---declare @homeid char(3) = (select homeid from deleted)
---declare @outid char(3) = (select outid from deleted)
+create trigger bTrigger
+on matches 
+for delete, update
+as 
+declare @homegoal int = (select homegoal from deleted)
+declare @outgoal int = (select outgoal from deleted)
+declare @homeid char(3) = (select homeid from deleted)
+declare @outid char(3) = (select outid from deleted)
 
---	if(@homegoal > @outgoal)
---		update teams set points -= 3 where Id = @homeid
---	else if (@homegoal < @outgoal) 
---		update teams set points -= 3 where Id = @outid
---	else
---		begin
---		update teams set points -= 1 where Id = @homeid
---		update teams set points -= 1 where Id = @outid
---		end
---	update teams set nomatches -= 1, owngoals -= @homegoal, othergoals -= @outgoal  where Id = @homeid
---	update teams set nomatches -= 1, owngoals -= @outgoal, othergoals -= @homegoal  where Id = @outid
-		
---go     
+	if(@homegoal > @outgoal)
+		update teams set points -= 3 where Id = @homeid
+	else if (@homegoal < @outgoal) 
+		update teams set points -= 3 where Id = @outid
+	else
+		begin
+		update teams set points -= 1 where Id = @homeid
+		update teams set points -= 1 where Id = @outid
+		end
+	update teams set nomatches -= 1, owngoals -= @homegoal, othergoals -= @outgoal  where Id = @homeid
+	update teams set nomatches -= 1, owngoals -= @outgoal, othergoals -= @homegoal  where Id = @outid
+
+	update teams set nomatches = 0 where nomatches < 0
+	update teams set othergoals = 0 where othergoals < 0
+	update teams set owngoals = 0 where owngoals < 0
+	update teams set points = 0 where points < 0
+	print 'Deleted something!'+'    Home: '+@homeid+'     Out: '+@outid
+go     
 
 --Exercise C
 go
@@ -127,7 +136,51 @@ deallocate t
 Select distinct hej.Hold, hej.Kampe, hej.Mål, hej.[Mål scoret på dem],hej.Point from (select name Hold, nomatches Kampe, owngoals Mål, othergoals 'Mål scoret på dem', points Point from teams, matches m where m.matchdate <= @dato) as hej  order by 5 desc
 go
 
+
 --Exercise D
+go
+drop proc SP_OpgaveD
+go
+create proc SP_OpgaveD
+as
+declare t cursor for 
+select m.homeid, m.outgoal, m.homegoal, m.outid from matches m 
+declare @homeid char(3), @outid char(3), @homegoal int, @outgoal int, @oldDate date, @newDate date
+set @oldDate = (select top 1 m.matchdate from matches m order by matchdate) -- første dato
+open t
+fetch t into @homeid,@outgoal, @homegoal,@outid, @newDate
+while @@fetch_status = 0
+begin
+	begin
+			--------- Updates scoreboard
+			if(@homegoal > @outgoal)
+				update teams set points += 3 where Id = @homeid
+			if (@homegoal < @outgoal) 
+				update teams set points += 3 where Id = @outid
+			if(@homegoal = @outgoal)
+				begin
+				update teams set points += 1 where Id = @homeid
+				update teams set points += 1 where Id = @outid
+				end
+			update teams set nomatches += 1, owngoals += @homegoal, othergoals += @outgoal  where Id = @homeid
+			update teams set nomatches += 1, owngoals += @outgoal, othergoals += @homegoal  where Id = @outid
+			----------
+			if(@oldDate != @newDate)
+			begin
+				declare @tempDate varchar(20), @tempTeam varchar(20)
+				set @tempdate =  (select convert(nvarchar(20), @oldDate, 0))
+				set @tempTeam = (select t.name from teams t where t.points in (select MAX(points) from teams))
+				print 'On date '+@temp+' The leader is '
+			end
+
+	end
+	fetch t into @homeid,@outgoal, @homegoal,@outid, @newDate
+end
+close t
+deallocate t
+Select distinct max(hej.Point) from (select name Hold, nomatches Kampe, owngoals Mål, othergoals 'Mål scoret på dem', points Point from teams, matches m ) as hej 
+go 
+
 
 go
 insert into matches values('vib','fcn',0,4,'2016-07-15')
@@ -187,12 +240,16 @@ insert into matches values('aab','agf',2,1,'2016-08-28')
 insert into matches values('vib','fcm',0,0,'2016-08-28')
 --
 --Exercise A Results
---select name Hold, nomatches Kampe, owngoals Mål, othergoals 'Mål scoret på dem', points Point from teams order by points desc
+select name Hold, nomatches Kampe, owngoals Mål, othergoals 'Mål scoret på dem', points Point from teams order by points desc
+
+--Exercise B Results
+Delete from matches where matchdate = '2016-08-22' -- check results for confirmed
+select name Hold, nomatches Kampe, owngoals Mål, othergoals 'Mål scoret på dem', points Point from teams order by points desc
 
 --Exercise C Results
-
 declare @d date;
 set @d = '2016-08-5'
 execute SP_OpgaveC @d
 
 --Exercise D
+
