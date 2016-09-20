@@ -170,7 +170,8 @@ begin
 				declare @tempDate varchar(20), @tempTeam varchar(20)
 				set @tempdate =  (select convert(nvarchar(20), @oldDate, 0))
 				set @tempTeam = (select t.name from teams t where t.points in (select MAX(points) from teams))
-				print 'On date '+@temp+' The leader is '
+				print 'On date '+@temp+' The leader is '+@tempTeam
+				@oldDate = @newDate
 			end
 
 	end
