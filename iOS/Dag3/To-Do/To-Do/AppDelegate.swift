@@ -34,6 +34,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         stateController.save()
     }
 
-
 }
 
