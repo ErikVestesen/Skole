@@ -72,9 +72,9 @@ namespace dag8opg1start
 
     }
 
-    class HeightConverter : IValueConverter
+    class WeightConverter : IValueConverter
     {
-        public HeightConverter() { }
+        public WeightConverter() { }
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -84,6 +84,21 @@ namespace dag8opg1start
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
+        }
+    }
+
+    class HeightConverter : IValueConverter
+    {
+        public HeightConverter() { }
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (double)value * 100;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return System.Convert.ToDouble(value) / 100;
         }
     }
 

@@ -4,11 +4,11 @@
         Title="MainWindow" Height="378.299" Width="525" Loaded="Window_Loaded">
     <StackPanel Name="TopStackPanel">
         <Label Content="Name" Height="28" Name="label1" />
-        <TextBox Height="23" Name="tBoxName" Width="120" HorizontalAlignment="Left" Text="{ Binding Path=Name}" />
+        <TextBox Height="23" Name="tBoxName" Width="120" HorizontalAlignment="Left" />
         <Label Content="Height (cm)" Height="28" Name="label2" />
-        <TextBox Height="23" Name="tBoxHeight" Width="120" HorizontalAlignment="Left" Text="{ Binding Path=Height}" />
+        <TextBox Height="23" Name="tBoxHeight" Width="120" HorizontalAlignment="Left" />
         <Label Content="Weight (kg)" Height="28" Name="label3" />
-        <TextBox Height="23" Name="tBoxWeight" Width="120" HorizontalAlignment="Left" Text="{ Binding Path=Weight}" />
+        <TextBox Height="23" Name="tBoxWeight" Width="120" HorizontalAlignment="Left"/>
         <Label Content="BMI" Height="28" Name="label4" />
         <Rectangle Height="6" Stroke="LightGreen" Width="185" HorizontalAlignment="Left" Fill="LightGreen"/>
         <Rectangle Height="25" Name="rectBmi" Stroke="Black" Width="100" HorizontalAlignment="Left" Fill="LightGray"/>

@@ -23,28 +23,6 @@ namespace dag8opg1start
         {
             InitializeComponent();
 
-            p = new Person { Name = "NN", Height = 1.8, Weight = 84 };
-            TopStackPanel.DataContext = p;
-            //// set binding for tBoxName
-            //Binding binding = new Binding();
-            //binding.Source = p;
-            //binding.Path = new PropertyPath("Name");
-            //binding.Mode = BindingMode.TwoWay;
-            //tBoxName.SetBinding(TextBox.TextProperty, binding);
-
-            //// set binding for tBoxHeight
-            //binding = new Binding();
-            //binding.Source = p;
-            //binding.Path = new PropertyPath("Height");
-            //binding.Mode = BindingMode.TwoWay;
-            //tBoxHeight.SetBinding(TextBox.TextProperty, binding);
-
-            //// set binding for tBoxWeight
-            //binding = new Binding();
-            //binding.Source = p;
-            //binding.Path = new PropertyPath("Weight");
-            //binding.Mode = BindingMode.TwoWay;
-            //tBoxWeight.SetBinding(TextBox.TextProperty, binding);
         }
 
         private void btnShow_Click(object sender, RoutedEventArgs e)
@@ -69,7 +47,8 @@ namespace dag8opg1start
         Person p = null;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            p = new Person { Name = "NN", Height = 1.8, Weight = 84 };
+
+            p = new Person { Name = "", Height = 1.8, Weight = 80 };
             TopStackPanel.DataContext = p;
             // set binding for tBoxName
             Binding binding = new Binding();
@@ -79,18 +58,19 @@ namespace dag8opg1start
             tBoxName.SetBinding(TextBox.TextProperty, binding);
 
             // set binding for tBoxHeight
-            binding = new Binding();
-            binding.Source = p;
-            binding.Path = new PropertyPath("Height");
-            binding.Mode = BindingMode.TwoWay;
-            tBoxHeight.SetBinding(TextBox.TextProperty, binding);
+            Binding bHeight = new Binding();
+            bHeight.Source = p;
+            bHeight.Converter = new HeightConverter();
+            bHeight.Path = new PropertyPath("Height");
+            bHeight.Mode = BindingMode.TwoWay;
+            tBoxHeight.SetBinding(TextBox.TextProperty, bHeight);
 
             // set binding for tBoxWeight
-            binding = new Binding();
-            binding.Source = p;
-            binding.Path = new PropertyPath("Weight");
-            binding.Mode = BindingMode.TwoWay;
-            tBoxWeight.SetBinding(TextBox.TextProperty, binding);
+            Binding bWeight = new Binding();
+            bWeight.Source = p;
+            bWeight.Path = new PropertyPath("Weight");
+            bWeight.Mode = BindingMode.TwoWay;
+            tBoxWeight.SetBinding(TextBox.TextProperty, bWeight);
         }
     }
 }
