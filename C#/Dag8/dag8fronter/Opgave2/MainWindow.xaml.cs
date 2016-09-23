@@ -28,13 +28,14 @@ namespace Opgave2
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            string location = @"C:\Users\User\Desktop\Erik\Skole\C#\Dag8\dag8fronter\Opgave2\";
             ObservableCollection<Staff> members = new ObservableCollection<Staff>();
             
-            members.Add(new Staff("Arne Tolstrup Madsen", "atm",null));
-            members.Add(new Staff("Torben Krøjmand", "tk", null));
-            members.Add(new Staff("Karsten Rasmussen", "kr", null));
-            members.Add(new Staff("Hanne Sommer", "haso", null));
-            members.Add(new Staff("Gert Simonsen", "gs", null));
+            members.Add(new Staff("Arne Tolstrup Madsen", "atm",location+"atm.jpg"));
+            members.Add(new Staff("Torben Krøjmand", "tk", location + "tk.jpg"));
+            members.Add(new Staff("Karsten Rasmussen", "kr", location + "kr.jpg"));
+            members.Add(new Staff("Hanne Sommer", "haso", location + "haso.jpg"));
+            members.Add(new Staff("Gert Simonsen", "gs", location + "gs.jpg"));
         }
     }
 }
