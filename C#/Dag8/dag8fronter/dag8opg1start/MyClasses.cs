@@ -5,6 +5,7 @@ using System.Text;
 using System.ComponentModel;
 using System.Windows.Data;
 using System.Globalization;
+using System.Windows.Media;
 
 namespace dag8opg1start
 {
@@ -72,13 +73,44 @@ namespace dag8opg1start
 
     }
 
-    class WeightConverter : IValueConverter
+    class RectangleColorConverter : IValueConverter
     {
-        public WeightConverter() { }
+        public RectangleColorConverter() { }
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            SolidColorBrush result = null;
+            if ((double)value < 18.5)
+            {
+                result = new SolidColorBrush(System.Windows.Media.Colors.LightYellow);
+            }
+            else if ((double)value < 25)
+            {
+                result = new SolidColorBrush(System.Windows.Media.Colors.LightGreen);
+            }
+            else if ((double)value < 30)
+            {
+                result = new SolidColorBrush(System.Windows.Media.Colors.LightYellow);
+            }
+            else { // BMI > 30 
+                result = new SolidColorBrush(System.Windows.Media.Colors.Red);
+            }
+            return result;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
             throw new NotImplementedException();
+        }
+    }
+
+    class BMIConverter : IValueConverter
+    {
+        public BMIConverter() { }
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (double)value * 10;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

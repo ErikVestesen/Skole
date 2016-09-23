@@ -71,6 +71,14 @@ namespace dag8opg1start
             bWeight.Path = new PropertyPath("Weight");
             bWeight.Mode = BindingMode.TwoWay;
             tBoxWeight.SetBinding(TextBox.TextProperty, bWeight);
+
+            // set binding for rectBmi
+            Binding bBmi = new Binding();
+            bBmi.Source = p;
+            bBmi.Converter = new BMIConverter();
+            bBmi.Path = new PropertyPath("BMI");
+            bBmi.Mode = BindingMode.OneWay;
+            rectBmi.SetBinding(Rectangle.WidthProperty, bBmi);
         }
     }
 }
