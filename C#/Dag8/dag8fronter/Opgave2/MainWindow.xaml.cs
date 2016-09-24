@@ -21,21 +21,59 @@ namespace Opgave2
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        ObservableCollection<Staff> members = new ObservableCollection<Staff>();
+        ListCollectionView view = null;
         public MainWindow()
         {
             InitializeComponent();
+            
+            members.Add(new Staff("Arne Tolstrup Madsen", "atm", "atm.jpg"));
+            members.Add(new Staff("Torben Krøjmand", "tk", "tk.jpg"));
+            members.Add(new Staff("Karsten Rasmussen", "kr", "kr.jpg"));
+            members.Add(new Staff("Hanne Sommer", "haso", "haso.jpg"));
+            members.Add(new Staff("Gert Simonsen", "gs", "gs.jpg"));
+
+            view = (ListCollectionView)CollectionViewSource.GetDefaultView(members);
+
+            Staff p = (Staff)view.CurrentItem;
+            updateinfo();
+        }
+        
+
+        private void btnRight_Click(object sender, RoutedEventArgs e)
+        {
+            view.MoveCurrentToNext();
+            if (view.IsCurrentAfterLast)
+            {
+                view.MoveCurrentToLast();
+            }
+            updateinfo();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void btnLeft_Click(object sender, RoutedEventArgs e)
         {
-            string location = @"C:\Users\User\Desktop\Erik\Skole\C#\Dag8\dag8fronter\Opgave2\";
-            ObservableCollection<Staff> members = new ObservableCollection<Staff>();
-            
-            members.Add(new Staff("Arne Tolstrup Madsen", "atm",location+"atm.jpg"));
-            members.Add(new Staff("Torben Krøjmand", "tk", location + "tk.jpg"));
-            members.Add(new Staff("Karsten Rasmussen", "kr", location + "kr.jpg"));
-            members.Add(new Staff("Hanne Sommer", "haso", location + "haso.jpg"));
-            members.Add(new Staff("Gert Simonsen", "gs", location + "gs.jpg"));
+            view.MoveCurrentToPrevious();
+            if (view.IsCurrentBeforeFirst)
+            {
+                view.MoveCurrentToFirst();
+            }
+            updateinfo();
         }
+
+        private void updateinfo()
+        {
+            Staff p = (Staff)view.CurrentItem;
+            lbl.Content = p.Initials;
+            tBox.Text = p.FullName;
+
+            Binding iBinding = new Binding();
+            iBinding.Source = view.CurrentItem;
+            iBinding.Converter = new imageConverter();
+            iBinding.Path = new PropertyPath("FileName");
+            iBinding.Mode = BindingMode.TwoWay;
+            img.SetBinding(Image.SourceProperty, iBinding);
+        }
+        
     }
 }
