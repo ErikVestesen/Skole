@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Opgave2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
+        Title="MainWindow" Height="350" Width="525">
     <Grid>
         <Image x:Name="img" HorizontalAlignment="Left" Height="199" Margin="10,10,0,0" VerticalAlignment="Top" Width="498" Source="{Binding Path FileName}"/>
         <Label x:Name="lbl" Content="Label" HorizontalAlignment="Left" Margin="10,229,0,0" VerticalAlignment="Top" Width="91"/>
