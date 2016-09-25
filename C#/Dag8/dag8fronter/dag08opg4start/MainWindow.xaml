@@ -1,0 +1,73 @@
+﻿<Window x:Class="dag8opg4start.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" SizeToContent="WidthAndHeight" Loaded="Window_Loaded" 
+        >
+
+    <Window.Resources>
+        <DataTemplate x:Key="NormalTemplate">
+            <Border BorderThickness="1" Margin="0,5,0,0" Background="LightGreen" CornerRadius="5" >
+                <Grid Width="300" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                        <TextBlock FontWeight="Bold" Text="{Binding Path=Name}"/>
+                        <TextBlock Text="Km: " Grid.Row="2" />
+                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Path=Km}"/>
+                        <TextBlock Text="ServiceKm: " Grid.Row="2" Grid.Column="3" />
+                        <TextBlock Grid.Row="2" Grid.Column="4" Text="{Binding Path=ServiceKm}"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ServiceTemplate">
+            <Border BorderThickness="1" Margin="0,5,0,0" Background="Red" CornerRadius="5" >
+                <Grid Width="300" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock FontWeight="Bold" Text="{Binding Path=Name}"/>
+                    <TextBlock Text="Km: " Grid.Row="2" />
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Path=Km}"/>
+                    <TextBlock Text="ServiceKm: " Grid.Row="2" Grid.Column="3" />
+                    <TextBlock Grid.Row="2" Grid.Column="4" Text="{Binding Path=ServiceKm}"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+    </Window.Resources>   
+    
+    
+  <StackPanel Name="stPnlMain" HorizontalAlignment="Stretch">
+    <ListBox Name="listBox1" HorizontalAlignment="Stretch" Height="240"></ListBox>
+    <Grid Name="grid1">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition></ColumnDefinition>
+        <ColumnDefinition></ColumnDefinition>
+      </Grid.ColumnDefinitions>
+      <Button Name="btnUp" Content="+" Height="22" Margin="0,0,0,-0.4" VerticalAlignment="Top" />
+      <Button Name="btnDown" Content="-" Grid.Column="1" />
+
+    </Grid>
+  </StackPanel>
+  </Window>
+
