@@ -46,7 +46,7 @@ namespace Opgave2
             view.MoveCurrentToNext();
             if (view.IsCurrentAfterLast)
             {
-                view.MoveCurrentToLast();
+                view.MoveCurrentToFirst();
             }
             updateinfo();
         }
@@ -56,7 +56,7 @@ namespace Opgave2
             view.MoveCurrentToPrevious();
             if (view.IsCurrentBeforeFirst)
             {
-                view.MoveCurrentToFirst();
+                view.MoveCurrentToLast();
             }
             updateinfo();
         }
