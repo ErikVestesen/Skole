@@ -17,9 +17,11 @@ namespace dag8opg4start
 {
   public partial class MainWindow : Window
   {
+        ScaleTransform scale = new ScaleTransform(1, 1);
         public MainWindow()
         {
             InitializeComponent();
+            stPnlMain.RenderTransform = scale;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -28,39 +30,18 @@ namespace dag8opg4start
             listBox1.ItemTemplateSelector = new CarSelector();
         }
 
-
-        double x = 1;
-        double y = 1;
         private void btnUp_Click(object sender, RoutedEventArgs e)
         {
-            x += 0.25;
-            y += 0.25;
-            
-            Transform scale = new ScaleTransform(x, y);
-            //listBox1.RenderTransform = scale;
-            //btnDown.RenderTransform = scale;
-            //btnUp.RenderTransform = scale;
-
-            stPnlMain.RenderTransform = scale;
-            Application.Current.MainWindow.Height *= y;
-            Application.Current.MainWindow.Width *= x;
-
+            if(scale.ScaleX < 1.5)
+            scale = new ScaleTransform(scale.ScaleX*1.25, scale.ScaleY*1.25);
+            stPnlMain.LayoutTransform = scale;
         }
-
 
         private void btnDown_Click(object sender, RoutedEventArgs e)
         {
-            if (x > 0) { 
-                x -= 0.25;
-                y -= 0.25;
-            Transform scale = new ScaleTransform(x, y);
-                //listBox1.RenderTransform = scale;
-                //btnDown.RenderTransform = scale;
-                //btnUp.RenderTransform = scale;
-                //grid1.RenderTransform = scale;
-                stPnlMain.RenderTransform = scale;
-                Application.Current.MainWindow.Height *= y;
-            Application.Current.MainWindow.Width *= x;
+            if (scale.ScaleX > 0.5) {
+                scale = new ScaleTransform(scale.ScaleX*0.8, scale.ScaleY*0.8);
+                stPnlMain.LayoutTransform = scale;
             }
         }
     }
