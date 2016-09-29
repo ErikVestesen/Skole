@@ -1,0 +1,40 @@
+﻿<Window x:Class="binding_threading.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="371.493" Width="1017.012" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid Name="mainGrid" ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="451"/>
+            <ColumnDefinition Width="613*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" Margin="10,10,0,0"
+                 Text="{Binding Path=Value, Mode=OneWay}"/>
+        <Button Content="Update datasource GUI Thread" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="230,10,0,0" Click="BtnGUI_Click"/>
+        <Button Content="Update datasource bckGr. Thread" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="230,50,0,0" Click="BtnThread_Click"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Column="1">
+        <ListBox Name="listBox1" ItemsSource="{Binding Stocks}" 
+                 Width="200" HorizontalAlignment="Left" Margin="10"
+                  >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="{Binding Symbol}"
+                                           Grid.Column="0" />
+                        <TextBlock Text="{Binding Value}"
+                                           Grid.Column="1" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+            <Button Name="btnAddItems" Content="Add 5 Items" Height="22.4" VerticalAlignment="Top" Margin="5,10" Click="btnAddItems_Click"/>
+            <Button Name="btnAddContinously" Content="KeepAddingItems" Height="22.4" VerticalAlignment="Top" Margin="5,10" Click="btnContinously_Click"/>
+            <Button Name="btnStopContinously" Content="StopAddingItems" Height="22.4" VerticalAlignment="Top" Margin="5,10" Click="btnStopContinously_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
