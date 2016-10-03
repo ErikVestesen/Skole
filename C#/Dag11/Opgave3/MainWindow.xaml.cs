@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -23,6 +25,7 @@ namespace Opgave3
     public partial class MainWindow : Window
     {
         BackgroundWorker worker = new BackgroundWorker();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -33,39 +36,41 @@ namespace Opgave3
             worker.RunWorkerCompleted += worker_RunWorkerCompleted;
             worker.WorkerSupportsCancellation = true;
             worker.WorkerReportsProgress = true;
-            //Scan(@"C:\Users\Erik\Desktop");
         }
 
         void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            Scan(@"C:\Users\Erik\Desktop");
+            string path = @"C:\Users\Erik\Desktop";
+            Scan(path);
         }
 
         void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             string filename = (string)e.UserState;
             lBox.Items.Add(filename);
+            txtBox_Start.Text = ""+lBox.Items.Count;
         }
 
         void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            
+            lbl_scan.Content = "";
         }
 
-        public void Scan(string path) {
-            string[] dirs = Directory.GetDirectories(path);
-            string[] files = Directory.GetFiles(path,"*.txt");
-            foreach (string dir in dirs)
-            {
-                Scan(dir);
-                foreach(string file in files)
+        public void Scan(string path) {            
+                string[] dirs = Directory.GetDirectories(path, "*");
+                string[] files = Directory.GetFiles(path, "*.dyn");
+                foreach (string file in files)
                 {
+                    if (worker.CancellationPending == true)
+                        return;
                     worker.ReportProgress(0, file);
-                }
-            }
-            
 
-    }
+                }
+                foreach (string dir in dirs)
+                {
+                    Scan(dir);
+                }
+        }
 
 
         private void btn_stop_Click(object sender, RoutedEventArgs e)
@@ -75,7 +80,15 @@ namespace Opgave3
 
         private void btn_start_Click(object sender, RoutedEventArgs e)
         {
-            worker.RunWorkerAsync();
+            lBox.Items.Clear();
+            if(!worker.IsBusy)
+                worker.RunWorkerAsync();
+        }
+
+        private void btn_show_Click(object sender, RoutedEventArgs e)
+        {
+            if(lBox.SelectedItem != null)
+            Process.Start(lBox.SelectedItem.ToString());
         }
     }
 }

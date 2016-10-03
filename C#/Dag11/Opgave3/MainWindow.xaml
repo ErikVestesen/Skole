@@ -10,11 +10,12 @@
         <Label x:Name="label" Content="Start in folder" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1" Content="Filemask" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="txtBox_Start" HorizontalAlignment="Left" Margin="97,15,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="167" Height="21"/>
-        <TextBlock x:Name="txtBox_File" HorizontalAlignment="Left" Margin="70,69,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="167" Height="21"/>
         <Button x:Name="btn_start" Content="Start scan" HorizontalAlignment="Left" Margin="299,67,0,0" VerticalAlignment="Top" Width="75" Click="btn_start_Click"/>
         <Button x:Name="btn_stop" Content="Stop scan" HorizontalAlignment="Left" Margin="395,67,0,0" VerticalAlignment="Top" Width="75" Click="btn_stop_Click"/>
-        <Button x:Name="btn_show" Content="Show file" HorizontalAlignment="Left" Margin="395,116,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btn_show" Content="Show file" HorizontalAlignment="Left" Margin="395,116,0,0" VerticalAlignment="Top" Width="75" Click="btn_show_Click"/>
         <ListBox x:Name="lBox" HorizontalAlignment="Left" Height="193" Margin="10,116,0,0" VerticalAlignment="Top" Width="373"/>
+        <TextBox x:Name="tbox" HorizontalAlignment="Left" Height="23" Margin="70,67,0,0" TextWrapping="Wrap" Text="{Binding Path=filemask}" VerticalAlignment="Top" Width="168"/>
+        <Label x:Name="lbl_scan" Content="" HorizontalAlignment="Left" Margin="299,92,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>
