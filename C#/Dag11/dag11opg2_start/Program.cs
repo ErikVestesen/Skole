@@ -34,9 +34,11 @@ namespace opg2
             {
                 lock (lockObject)
                 {
-                    buffer.Insert(buffer.Count, s);
-                    Console.WriteLine(Thread.CurrentThread.Name + " put " + s + " new buffer.Count=" + buffer.Count);
-                    Monitor.PulseAll(lockObject);
+                    if(buffer.Count < 5) { // opgave b?
+                        buffer.Insert(buffer.Count, s);
+                        Console.WriteLine(Thread.CurrentThread.Name + " put " + s + " new buffer.Count=" + buffer.Count);
+                        Monitor.PulseAll(lockObject);
+                    }
                 }
             }
 
@@ -73,7 +75,7 @@ namespace opg2
             for (int i = 0; i < 80; i++)
             {
                 string s = (buffer as Buffer).Get();
-                Thread.Sleep(50);
+                Thread.Sleep(100); // Desto mere tid, desto mere mutual exclusion
             }
         }
 
@@ -94,7 +96,7 @@ namespace opg2
             pro1.Start(buffer);
             pro2.Start(buffer);
             con1.Start(buffer);
-
+           
             Console.ReadLine();
         }
 

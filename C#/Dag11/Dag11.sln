@@ -7,6 +7,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opgave1", "Opgave1\Opgave1.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoThreadSynchronization", "DEMOTHREADSYNCHRONIZATION\DemoThreadSynchronization.csproj", "{430393A1-96B3-4634-B387-6533D6C5C335}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opgave2", "dag11opg2_start\Opgave2.csproj", "{59E0F15D-42D2-4C37-957D-556450009AE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opgave3", "Opgave3\Opgave3.csproj", "{D615413D-DE44-45FD-BAA5-4FD24C977555}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleBackgroundWorker", "SimpleBackgroundWorker\SimpleBackgroundWorker.csproj", "{D2087B73-FE1E-4A46-9C56-AAAED7824DB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfBackGroundWorker", "WPFBACKGROUNDWORKER\WpfBackGroundWorker.csproj", "{B0244E8D-27FB-40F9-8A2D-CA517E369B4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +29,22 @@ Global
 		{430393A1-96B3-4634-B387-6533D6C5C335}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{430393A1-96B3-4634-B387-6533D6C5C335}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{430393A1-96B3-4634-B387-6533D6C5C335}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59E0F15D-42D2-4C37-957D-556450009AE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59E0F15D-42D2-4C37-957D-556450009AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59E0F15D-42D2-4C37-957D-556450009AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59E0F15D-42D2-4C37-957D-556450009AE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D615413D-DE44-45FD-BAA5-4FD24C977555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D615413D-DE44-45FD-BAA5-4FD24C977555}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D615413D-DE44-45FD-BAA5-4FD24C977555}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D615413D-DE44-45FD-BAA5-4FD24C977555}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2087B73-FE1E-4A46-9C56-AAAED7824DB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2087B73-FE1E-4A46-9C56-AAAED7824DB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2087B73-FE1E-4A46-9C56-AAAED7824DB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2087B73-FE1E-4A46-9C56-AAAED7824DB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0244E8D-27FB-40F9-8A2D-CA517E369B4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0244E8D-27FB-40F9-8A2D-CA517E369B4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0244E8D-27FB-40F9-8A2D-CA517E369B4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0244E8D-27FB-40F9-8A2D-CA517E369B4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
