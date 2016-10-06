@@ -21,10 +21,10 @@
 		44BED76B1D91314A00AAC2EF /* JSONDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BED76A1D91314A00AAC2EF /* JSONDownload.swift */; };
 		44FD51251D91803000F467E6 /* ParkingLot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FD51241D91803000F467E6 /* ParkingLot.swift */; };
 		44FD51271D9181AE00F467E6 /* ParkinglotStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FD51261D9181AE00F467E6 /* ParkinglotStateController.swift */; };
-		44FD51291D9277EC00F467E6 /* ParkinglotStateControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FD51281D9277EC00F467E6 /* ParkinglotStateControllerDelegate.swift */; };
+		8EA57DA41DA64DCE00E26A6D /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA57DA31DA64DCE00E26A6D /* PreferencesViewController.swift */; };
 		96DC119C1D9CEF35009C92BB /* Toilet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DC119B1D9CEF35009C92BB /* Toilet.swift */; };
 		96DC119E1D9CF0D4009C92BB /* ToiletStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DC119D1D9CF0D4009C92BB /* ToiletStateController.swift */; };
-		96DC11A21D9CF170009C92BB /* ToiletStateControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DC11A11D9CF170009C92BB /* ToiletStateControllerDelegate.swift */; };
+		96DC11A21D9CF170009C92BB /* StateControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DC11A11D9CF170009C92BB /* StateControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,10 +44,10 @@
 		44BED76A1D91314A00AAC2EF /* JSONDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDownload.swift; sourceTree = "<group>"; };
 		44FD51241D91803000F467E6 /* ParkingLot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingLot.swift; sourceTree = "<group>"; };
 		44FD51261D9181AE00F467E6 /* ParkinglotStateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkinglotStateController.swift; sourceTree = "<group>"; };
-		44FD51281D9277EC00F467E6 /* ParkinglotStateControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkinglotStateControllerDelegate.swift; sourceTree = "<group>"; };
+		8EA57DA31DA64DCE00E26A6D /* PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		96DC119B1D9CEF35009C92BB /* Toilet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toilet.swift; sourceTree = "<group>"; };
 		96DC119D1D9CF0D4009C92BB /* ToiletStateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToiletStateController.swift; sourceTree = "<group>"; };
-		96DC11A11D9CF170009C92BB /* ToiletStateControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToiletStateControllerDelegate.swift; sourceTree = "<group>"; };
+		96DC11A11D9CF170009C92BB /* StateControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,9 +74,11 @@
 		443690001D81592A00CF0C4E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8EA57DA21DA64DA500E26A6D /* Preferences */,
 				96DC119A1D9CEF05009C92BB /* Toilet */,
 				96DC11991D9CEEFD009C92BB /* ParkingLot */,
 				4493EBBC1D78285D00EE532E /* AppDelegate.swift */,
+				96DC11A11D9CF170009C92BB /* StateControllerDelegate.swift */,
 				443690041D8163FD00CF0C4E /* TableViewDataSource.swift */,
 				443690081D816BE300CF0C4E /* TableViewDelegate.swift */,
 				44BED7681D91310500AAC2EF /* JSONDownloadDelegate.swift */,
@@ -123,6 +125,14 @@
 			path = "To-Do";
 			sourceTree = "<group>";
 		};
+		8EA57DA21DA64DA500E26A6D /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				8EA57DA31DA64DCE00E26A6D /* PreferencesViewController.swift */,
+			);
+			name = Preferences;
+			sourceTree = "<group>";
+		};
 		96DC11971D9CEED7009C92BB /* ParkingLot */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,7 +155,6 @@
 		96DC11991D9CEEFD009C92BB /* ParkingLot */ = {
 			isa = PBXGroup;
 			children = (
-				44FD51281D9277EC00F467E6 /* ParkinglotStateControllerDelegate.swift */,
 				4493EBD01D78356200EE532E /* ParkinglotListTableViewController.swift */,
 			);
 			name = ParkingLot;
@@ -155,7 +164,6 @@
 			isa = PBXGroup;
 			children = (
 				4454DFFC1D929BED00BC3F44 /* ToiletLocationViewController.swift */,
-				96DC11A11D9CF170009C92BB /* ToiletStateControllerDelegate.swift */,
 			);
 			name = Toilet;
 			sourceTree = "<group>";
@@ -192,6 +200,7 @@
 				TargetAttributes = {
 					4493EBB81D78285D00EE532E = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -237,10 +246,10 @@
 				4493EBBD1D78285D00EE532E /* AppDelegate.swift in Sources */,
 				443690051D8163FD00CF0C4E /* TableViewDataSource.swift in Sources */,
 				44FD51251D91803000F467E6 /* ParkingLot.swift in Sources */,
-				96DC11A21D9CF170009C92BB /* ToiletStateControllerDelegate.swift in Sources */,
+				8EA57DA41DA64DCE00E26A6D /* PreferencesViewController.swift in Sources */,
+				96DC11A21D9CF170009C92BB /* StateControllerDelegate.swift in Sources */,
 				44BED76B1D91314A00AAC2EF /* JSONDownload.swift in Sources */,
 				4493EBD11D78356200EE532E /* ParkinglotListTableViewController.swift in Sources */,
-				44FD51291D9277EC00F467E6 /* ParkinglotStateControllerDelegate.swift in Sources */,
 				96DC119C1D9CEF35009C92BB /* Toilet.swift in Sources */,
 				96DC119E1D9CF0D4009C92BB /* ToiletStateController.swift in Sources */,
 				44BED7691D91310500AAC2EF /* JSONDownloadDelegate.swift in Sources */,
@@ -362,6 +371,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dk.eaaa.dmu.ksd.Parkinglot;
 				PRODUCT_NAME = Parkinglot.temp_caseinsensitive_rename;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -373,6 +383,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dk.eaaa.dmu.ksd.Parkinglot;
 				PRODUCT_NAME = Parkinglot.temp_caseinsensitive_rename;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};

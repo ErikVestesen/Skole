@@ -18,12 +18,12 @@ class JSONDownload {
         case ConvertionFailed = "Error: Conversion from JSON failed"
     }
     
-    init(urlPath:String) {
+  init(urlPath:String) {
         
         if let endPoint = NSURL(string: urlPath) {
             let request = NSMutableURLRequest(URL: endPoint)
             NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
-                
+              
                 do {
                     guard let data = data else {
                         throw JSONError.NoData

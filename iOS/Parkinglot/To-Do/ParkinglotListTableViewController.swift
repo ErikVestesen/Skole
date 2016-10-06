@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ParkinglotListTableViewController: UITableViewController, ParkinglotStateControllerDelegate {
+class ParkinglotListTableViewController: UITableViewController, StateControllerDelegate {
     
     var rerfreshCtrl: UIRefreshControl!
     

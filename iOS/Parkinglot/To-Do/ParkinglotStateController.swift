@@ -12,7 +12,7 @@ import Foundation
 class ParkinglotStateController {
     
     // delegate to notify when json data is ready
-    var delegate: ParkinglotStateControllerDelegate?
+    var delegate: StateControllerDelegate?
     
     private(set) var items = [ParkingLot]()
     

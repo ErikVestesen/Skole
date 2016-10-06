@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol ToiletStateControllerDelegate {
+protocol StateControllerDelegate {
     func dataIsReady()
 }

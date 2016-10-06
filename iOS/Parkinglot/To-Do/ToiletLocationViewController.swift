@@ -12,27 +12,30 @@ import MapKit
 class ToiletLocationViewController: UIViewController {
 
     @IBOutlet weak var toiletMapView: MKMapView!
+  
+    var stateController:ToiletStateController?
+  
+  @IBAction func mapViewAction(sender: AnyObject) {
+    if sender.selectedIndex == 0
+    {toiletMapView.mapType = MKMapType.Satellite}
+    else if sender.selectedIndex == 1
+    {toiletMapView.mapType = MKMapType.Standard}
+    else if sender.selectedIndex == 2
+    {toiletMapView.mapType = MKMapType.Hybrid }
     
+  }
+  
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+      
+        toiletMapView.delegate = self
+      
+      
+     let jsonDownloadController = JSONDownload(urlPath: "http://events.makeable.dk/api/getEvents")
 
-        // Do any additional setup after loading the view.
+      if let stateController = stateController {
+        jsonDownloadController.delegate = stateController
+        stateController.delegate = self
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
