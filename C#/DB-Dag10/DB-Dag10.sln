@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DB10.1", "DB10.1\DB10.1.csproj", "{67224032-0DAE-420D-A2F8-AE839CD5F7D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opgave1", "..\Dag6\Opgave1\Opgave1.csproj", "{1001E3D9-079C-47BA-B959-5FCAFBED5EA3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67224032-0DAE-420D-A2F8-AE839CD5F7D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67224032-0DAE-420D-A2F8-AE839CD5F7D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67224032-0DAE-420D-A2F8-AE839CD5F7D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67224032-0DAE-420D-A2F8-AE839CD5F7D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1001E3D9-079C-47BA-B959-5FCAFBED5EA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1001E3D9-079C-47BA-B959-5FCAFBED5EA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1001E3D9-079C-47BA-B959-5FCAFBED5EA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1001E3D9-079C-47BA-B959-5FCAFBED5EA3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

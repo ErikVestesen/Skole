@@ -120,7 +120,7 @@ namespace Opgave1
             cbox_land.ItemsSource = countries;
             cbox_land.SelectedValue = "Denmark";
             //lbox_ansatte.ItemsSource = ansatte;
-            tBlock_ansatte.Item
+            //tBlock_ansatte.Item
         }
 
         private void cbox_land_SelectionChanged(object sender, SelectionChangedEventArgs e)
