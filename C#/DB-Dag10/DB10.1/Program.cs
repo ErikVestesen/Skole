@@ -13,113 +13,13 @@ namespace DB10._1
     {
         static void Main(string[] args)
         {
-            string[] k = { "sd", "ds","1" };
-            string[] k1 = { "sd", "ds","1" };
-
-            string res = "true";
-            if(k.Length == k1.Length) { 
-                    for (int i = 0; i < k.Length; i++)
-                    {
-                        if(k[i] != k1[i])
-                        {
-                            res = "false";
-                        }
-                    }
-                Console.WriteLine(res);
-            }
-            Console.ReadLine();
             //E1();
             //E2();
             //E3();
-            //E4();
+            E4();
             //E5();
         }
 
-        //----- Not Tran, kun til E1
-        private static void sqlGet(string input, SqlConnection con)
-        {
-            string sql = "SELECT navn, stilling, loen FROM person WHERE cpr = " + @input;
-            SqlCommand cmd = new SqlCommand(sql, con);
-            cmd.Parameters.AddWithValue("@input", input);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                string line = "Navn: " + reader[0] + ", Stilling: " + reader[1] + ",Løn: " + reader[2];
-                Console.WriteLine(line);
-            }
-            reader.Close();
-        }
-
-        private static void sqlUpdate(string loen,string cpr, SqlConnection con)
-        {
-            string sql1 = "UPDATE person SET loen += " + @loen + " WHERE cpr = " + @cpr;
-            SqlCommand cmd1 = new SqlCommand(sql1, con);
-            cmd1.Parameters.AddWithValue(@cpr, cpr);
-            cmd1.Parameters.AddWithValue(@loen, loen);
-            cmd1.ExecuteNonQuery();
-            Console.WriteLine("Løn ændret");
-            Console.ReadLine();
-        }
-
-        private static void DoStuff(SqlConnection con)
-        {
-
-            //---- Finder person
-            Console.WriteLine("Skriv CPR");
-            string cpr = Console.ReadLine();
-            sqlGet(cpr, con);
-
-            //---- Opdaterer Løn
-            Console.WriteLine("Skriv løn");
-            string loen = Console.ReadLine();
-            sqlUpdate(loen, cpr, con);
-        }
-        
-        
-        //----- TRAN
-        private static void DoStuffTran(SqlConnection con, SqlTransaction tran)
-        {
-
-            //---- Finder person
-            Console.WriteLine("Skriv CPR");
-            string cpr = Console.ReadLine();
-            if(cpr.Count() > 0)
-                sqlGetTran(cpr, con,tran);
-
-            //---- Opdaterer Løn
-            Console.WriteLine("Skriv løn");
-            string loen = Console.ReadLine();
-            if(loen.Count() > 0)
-                sqlUpdateTran(loen, cpr, con, tran);
-        }
-
-        private static void sqlGetTran(string input, SqlConnection con, SqlTransaction tran)
-        {
-            string sql = "SELECT navn, stilling, loen FROM person WHERE cpr = " + @input;
-            SqlCommand cmd = new SqlCommand(sql, con);
-            cmd.Transaction = tran;
-            cmd.Parameters.AddWithValue("@input", input);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                string line = "Navn: " + reader[0] + ", Stilling: " + reader[1] + ",Løn: " + reader[2];
-                Console.WriteLine(line);
-            }
-            reader.Close();
-
-        }
-
-        private static void sqlUpdateTran(string loen, string cpr, SqlConnection con, SqlTransaction tran)
-        {
-            string sql1 = "UPDATE person SET loen = " + @loen + " WHERE cpr = " + @cpr;
-            SqlCommand cmd1 = new SqlCommand(sql1, con);
-            cmd1.Transaction = tran;
-            cmd1.Parameters.AddWithValue(@cpr, cpr);
-            cmd1.Parameters.AddWithValue(@loen, loen);
-            cmd1.ExecuteNonQuery();
-            Console.WriteLine("Løn ændret");
-            Console.ReadLine();
-        }
 
 
         //Standard
@@ -179,17 +79,27 @@ namespace DB10._1
             con.Open();
 
 
-
             Console.WriteLine("Skriv CPR");
-            string cpr = Console.ReadLine();
-            if (cpr.Count() > 0)
-                sqlGet(cpr, con);
-            //Vent på bruger data
-            SqlTransaction tran = con.BeginTransaction();
-            //Check om data er uændret
-            DoStuffTran(con, tran);
+            string input = Console.ReadLine();
+            string start = e4get(con, input);
 
-            tran.Commit();
+            SqlTransaction tran = con.BeginTransaction(IsolationLevel.Snapshot);
+            //begin tran
+            string res = e4get(con, input);
+            if (res == start)
+                    {
+                        Console.WriteLine("Skriv løn");
+                        string loen = Console.ReadLine();
+                        if (loen.Count() > 0)
+                            sqlUpdateTran(loen, input, con, tran);
+                        tran.Commit();
+                    }
+                    else
+                    {
+                        Console.WriteLine("DATA ER ÆNDRET, SUT PIK MAND");
+                        tran.Rollback();
+                    }
+                    Console.ReadLine();
             con.Close();
             E4();
         }
@@ -197,46 +107,116 @@ namespace DB10._1
         //Transaktioner og isolation level snapshot
         private static void E5()
         {
-            string connStr = @"Data Source=localhost\sqlExpress;"
-            + "Integrated security=true; "
-            + "database=Dag10";
+
+        }
 
 
-            SqlConnection con = new SqlConnection(connStr);
-            //------- Finder Person
-            Console.WriteLine("Skriv CPR");
-            string input = Console.ReadLine();
+
+        //----- Not Tran, kun til E1
+        private static void sqlGet(string input, SqlConnection con)
+        {
             string sql = "SELECT navn, stilling, loen FROM person WHERE cpr = " + @input;
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.Parameters.AddWithValue("@input", input);
-            con.Open();
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 string line = "Navn: " + reader[0] + ", Stilling: " + reader[1] + ",Løn: " + reader[2];
                 Console.WriteLine(line);
-
             }
             reader.Close();
-            //------
+        }
 
-            //------ Opdaterer Løn
-            Console.WriteLine("Skriv løn");
-            string input1 = Console.ReadLine();
-            string sql1 = "UPDATE person SET loen += " + @input1 + " WHERE cpr = " + @input;
+        private static void sqlUpdate(string loen, string cpr, SqlConnection con)
+        {
+            string sql1 = "UPDATE person SET loen += " + @loen + " WHERE cpr = " + @cpr;
             SqlCommand cmd1 = new SqlCommand(sql1, con);
-            cmd1.Parameters.AddWithValue(@input, input);
-            cmd1.Parameters.AddWithValue(@input1, input1);
+            cmd1.Parameters.AddWithValue(@cpr, cpr);
+            cmd1.Parameters.AddWithValue(@loen, loen);
             cmd1.ExecuteNonQuery();
             Console.WriteLine("Løn ændret");
             Console.ReadLine();
-            //------
+        }
 
-            con.Close();
-            E5();
+        private static void DoStuff(SqlConnection con)
+        {
+
+            //---- Finder person
+            Console.WriteLine("Skriv CPR");
+            string cpr = Console.ReadLine();
+            sqlGet(cpr, con);
+
+            //---- Opdaterer Løn
+            Console.WriteLine("Skriv løn");
+            string loen = Console.ReadLine();
+            sqlUpdate(loen, cpr, con);
         }
 
 
+        //----- TRAN
+        private static void DoStuffTran(SqlConnection con, SqlTransaction tran)
+        {
+
+            //---- Finder person
+            Console.WriteLine("Skriv CPR");
+            string cpr = Console.ReadLine();
+            if (cpr.Count() > 0)
+                sqlGetTran(cpr, con, tran);
+
+            //---- Opdaterer Løn
+            Console.WriteLine("Skriv løn");
+            string loen = Console.ReadLine();
+            if (loen.Count() > 0)
+                sqlUpdateTran(loen, cpr, con, tran);
+        }
+
+        private static void sqlGetTran(string input, SqlConnection con, SqlTransaction tran)
+        {
+            string sql = "SELECT navn, stilling, loen FROM person WHERE cpr = " + @input;
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Transaction = tran;
+            cmd.Parameters.AddWithValue("@input", input);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                string line = "Navn: " + reader[0] + ", Stilling: " + reader[1] + ",Løn: " + reader[2];
+                Console.WriteLine(line);
+            }
+            reader.Close();
+
+        }
+
+        private static void sqlUpdateTran(string loen, string cpr, SqlConnection con, SqlTransaction tran)
+        {
+            string sql1 = "UPDATE person SET loen = " + @loen + " WHERE cpr = " + @cpr;
+            SqlCommand cmd1 = new SqlCommand(sql1, con);
+            cmd1.Transaction = tran;
+            cmd1.Parameters.AddWithValue(@cpr, cpr);
+            cmd1.Parameters.AddWithValue(@loen, loen);
+            cmd1.ExecuteNonQuery();
+            Console.WriteLine("Løn ændret");
+            Console.ReadLine();
+        }
+        
+        private static string e4get(SqlConnection con, string input)
+        {
+            string res = "";
+            if (input.Count() > 0)
+            {
+                //-- Get Start
+                string sql = "SELECT navn, stilling, loen FROM person WHERE cpr = " +input;
+                SqlCommand cmd = new SqlCommand(sql, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    string line = "Navn: " + reader[0] + ", Stilling: " + reader[1] + ",Løn: " + reader[2];
+                    Console.WriteLine(line);
+                    res = line;
+                }
+                reader.Close();
+            }
+            return res;
+        }
 
         //----------OLD
         //private static void E1()
