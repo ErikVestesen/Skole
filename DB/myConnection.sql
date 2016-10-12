@@ -101,6 +101,14 @@ end;
 
 ------------------
 
+
+--Opgave 15
+select name 
+from person
+where rownum <= 3
+order by salary desc;
+------------------
+
 insert into zipcode values('8000','Århus C');
 insert into zipcode values('8200','Århus N');
 insert into zipcode values('8210','Århus V');
