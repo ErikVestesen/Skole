@@ -60,3 +60,15 @@ insert into ansati values('1212121212',2)
 insert into ansati values('1313131313',4)
 insert into ansati values('1414141414',4)
 insert into ansati values('1616161616',2)
+
+
+
+
+select * from person
+select * from firma
+Select * from ansati
+select navn from person, firma where person.postnr = firma.postnr
+
+select navn,firmanavn from person, ansati,firma where person.cpr = ansati.cpr and firma.firmanr = ansati.firmanr
+
+select navn, firmanavn from person, firma

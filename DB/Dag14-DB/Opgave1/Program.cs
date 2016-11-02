@@ -72,7 +72,7 @@ namespace Opgave1
             printPersons(db);
 
             //----------14.2
-            //-- de finder løn der er over 350k, jeg ka godt li nr 2
+            //-- de finder løn der er over 350k, jeg ka ikk li nr 2 fordi den bruger if istedet for where
 
             //----------14.3
             //--metode 1
@@ -96,7 +96,10 @@ namespace Opgave1
             //    Console.WriteLine("Person ikke fundet");
             //}
             //Console.ReadLine();
-
+            string inputCpr = "asd";
+            string inputPostNr = "";
+            person p2 = (from p in db.people where p.cpr == inputCpr select p).First();
+                p2.postnr = inputPostNr;
             //printPersons(db);
 
             //--metode 2
