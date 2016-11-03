@@ -13,9 +13,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
+  let stateController = StateController()
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+    stateController.getData()
+    if let firstViewController = window?.rootViewController as? ViewController {
+        firstViewController.stateController = self.stateController
+      stateController.delegate = firstViewController
+    }
+    
     return true
   }
 

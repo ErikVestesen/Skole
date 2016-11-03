@@ -28,6 +28,17 @@ class StateController : JSONDownloadDelegate {
   }
   
   func finishedDownloading(data: JSON) {
-    
+    if let items = data["items"].array {
+      for item in items {
+        if let name = item["name"].string,
+        let description = item["description"].string,
+          let avatarURL = item["owner"]["avatar_url"].string {
+          let repo = Repo (name: name, avatarURL: avatarURL, description: description)
+            add(repo: repo)
+        }
+      }
+    }
+    delegate?.dataIsReady()
+    //print("\(repos)")
   }
 }
