@@ -10,8 +10,8 @@
 		8E56E9651DCB2A01008611FA /* StateControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E56E9641DCB2A01008611FA /* StateControllerDelegate.swift */; };
 		8E56E9671DCB2A96008611FA /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E56E9661DCB2A96008611FA /* Repo.swift */; };
 		8E56E9691DCB2E0D008611FA /* JSONDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E56E9681DCB2E0D008611FA /* JSONDownload.swift */; };
+		8E56E96D1DCB4C20008611FA /* RepoListTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E56E96C1DCB4C20008611FA /* RepoListTableTableViewController.swift */; };
 		8EF0B1981DCB21830012CD0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF0B1971DCB21830012CD0E /* AppDelegate.swift */; };
-		8EF0B19A1DCB21830012CD0E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF0B1991DCB21830012CD0E /* ViewController.swift */; };
 		8EF0B19D1DCB21830012CD0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EF0B19B1DCB21830012CD0E /* Main.storyboard */; };
 		8EF0B19F1DCB21830012CD0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EF0B19E1DCB21830012CD0E /* Assets.xcassets */; };
 		8EF0B1A21DCB21830012CD0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EF0B1A01DCB21830012CD0E /* LaunchScreen.storyboard */; };
@@ -24,9 +24,9 @@
 		8E56E9641DCB2A01008611FA /* StateControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateControllerDelegate.swift; sourceTree = "<group>"; };
 		8E56E9661DCB2A96008611FA /* Repo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		8E56E9681DCB2E0D008611FA /* JSONDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDownload.swift; sourceTree = "<group>"; };
+		8E56E96C1DCB4C20008611FA /* RepoListTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoListTableTableViewController.swift; sourceTree = "<group>"; };
 		8EF0B1941DCB21830012CD0E /* TopGithub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopGithub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EF0B1971DCB21830012CD0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8EF0B1991DCB21830012CD0E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8EF0B19C1DCB21830012CD0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8EF0B19E1DCB21830012CD0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EF0B1A11DCB21830012CD0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -67,7 +67,6 @@
 			isa = PBXGroup;
 			children = (
 				8EF0B1971DCB21830012CD0E /* AppDelegate.swift */,
-				8EF0B1991DCB21830012CD0E /* ViewController.swift */,
 				8EF0B19B1DCB21830012CD0E /* Main.storyboard */,
 				8EF0B19E1DCB21830012CD0E /* Assets.xcassets */,
 				8EF0B1A01DCB21830012CD0E /* LaunchScreen.storyboard */,
@@ -78,6 +77,7 @@
 				8EF0B1AD1DCB24C40012CD0E /* JSONDownloadDelegate.swift */,
 				8E56E9661DCB2A96008611FA /* Repo.swift */,
 				8E56E9681DCB2E0D008611FA /* JSONDownload.swift */,
+				8E56E96C1DCB4C20008611FA /* RepoListTableTableViewController.swift */,
 			);
 			path = TopGithub;
 			sourceTree = "<group>";
@@ -156,10 +156,10 @@
 			files = (
 				8E56E9671DCB2A96008611FA /* Repo.swift in Sources */,
 				8EF0B1AE1DCB24C40012CD0E /* JSONDownloadDelegate.swift in Sources */,
-				8EF0B19A1DCB21830012CD0E /* ViewController.swift in Sources */,
 				8E56E9651DCB2A01008611FA /* StateControllerDelegate.swift in Sources */,
 				8EF0B1AA1DCB21F90012CD0E /* StateController.swift in Sources */,
 				8EF0B1981DCB21830012CD0E /* AppDelegate.swift in Sources */,
+				8E56E96D1DCB4C20008611FA /* RepoListTableTableViewController.swift in Sources */,
 				8EF0B1AC1DCB233E0012CD0E /* SwiftyJSON.swift in Sources */,
 				8E56E9691DCB2E0D008611FA /* JSONDownload.swift in Sources */,
 			);
