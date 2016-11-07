@@ -62,8 +62,8 @@ as
 begin
 	UPDATE booking
 	SET antalpersoner = INSERTED.antalpersoner
-	FROM INSERTED
-	WHERE INSERTED.antalpersoner <= booking.antalpersoner AND INSERTED.ugenr = booking.ugenr AND INSERTED.id = booking.id
+	FROM INSERTED,feriebolig fb
+	WHERE INSERTED.antalpersoner <= booking.antalpersoner AND INSERTED.ugenr = booking.ugenr AND INSERTED.id = fb.id
 
 	update antalsæder
 	set solgtepladser -= inserted.antalpersoner
@@ -73,5 +73,6 @@ end
 
 
 select * from antalSæder
-Update KravD3 set antalpersoner = 2 where ugenr = 29 and id = 1
+select * from KravD3
+Update KravD3 set antalpersoner = 1 where ugenr = 29 and id = 1
 select * from antalSæder
