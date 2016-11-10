@@ -61,15 +61,48 @@ class ViewController: UIViewController {
       inputs += [randomButton()]
       
       //play the button sequence
-      playSequence(0,highlightTime: highlightSquareTime)
+      play(sequence:0, highlightTime: highlightSquareTime)
       
     }
     
     return result
   }
   
-  func playSequence(_ index: Int, highlightTime: Double) {
+  func play(sequence: Int, highlightTime: Double) {
+    currentPlayer = .computer
+    if sequence == inputs.count {
+      currentPlayer = .human
+      return;
+    }
     
+    let button = buttonBy(color: inputs[sequence])
+    let originalColor = button.backgroundColor
+    let highligtColor = UIColor.white
+    
+    //sounds here
+    
+    UIView.animate(withDuration: highlightTime,
+                   delay: 0.0,
+                   options:UIViewAnimationOptions.curveLinear.intersection(.allowUserInteraction).intersection(.beginFromCurrentState),
+                   animations: {button.backgroundColor = highligtColor},
+                   completion: {finished in
+                      button.backgroundColor = originalColor
+                      let newIndex = sequence + 1
+                      self.play(sequence: newIndex, highlightTime: highlightTime)
+                   })
+  }
+  
+  func buttonBy(color: ButtonColor ) -> UIButton {
+    switch color {
+    case .red:
+        return redButton
+    case .green:
+        return greenButton
+    case .blue:
+        return blueButton
+    case .yellow:
+        return yellowButton
+    }
   }
   
   func randomButton() -> ButtonColor {
