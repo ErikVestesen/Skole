@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Simon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s04-5g-Wvb">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="LKt-OK-Cmv"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Simon says" id="CrI-mV-sMx">
+                                        <barButtonItem key="rightBarButtonItem" title="Start Game" id="pet-L3-qqI">
+                                            <connections>
+                                                <action selector="startButtonClicked:" destination="BYZ-38-t0r" id="LIy-J3-xKO"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EZc-aQ-Uco">
+                                <frame key="frameInset" minX="62" minY="208" width="250" height="250"/>
+                                <subviews>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybE-O3-W0I">
+                                        <frame key="frameInset" minY="2" width="120" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="buttonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PX1-ZL-DzQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYT-0P-STd">
+                                        <frame key="frameInset" minX="128" minY="2" width="120" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.054901964960000001" green="0.96862751250000001" blue="0.37254902719999999" alpha="1" colorSpace="deviceRGB"/>
+                                        <connections>
+                                            <action selector="buttonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hmr-Aj-U61"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4g-Uf-vGK">
+                                        <frame key="frameInset" minY="130" width="120" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="buttonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Be9-al-gzA"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G1q-hQ-KpL">
+                                        <frame key="frameInset" minX="128" minY="130" width="120" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="buttonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q9G-e1-ILS"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="5lP-be-iko"/>
+                                    <constraint firstAttribute="height" constant="250" id="Cg9-c1-g9V"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="250" id="WSf-0V-FDL"/>
+                                    <constraint firstAttribute="width" constant="250" id="mYM-SZ-WQM"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="EZc-aQ-Uco" firstAttribute="top" secondItem="s04-5g-Wvb" secondAttribute="bottom" constant="50" id="0bt-jC-QEv"/>
+                            <constraint firstItem="s04-5g-Wvb" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="3uF-AW-FZ7"/>
+                            <constraint firstItem="EZc-aQ-Uco" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="k8c-Dr-sJh"/>
+                            <constraint firstAttribute="trailing" secondItem="s04-5g-Wvb" secondAttribute="trailing" id="oaU-3h-PdV"/>
+                            <constraint firstItem="s04-5g-Wvb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="sI6-kd-EXa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="blueButton" destination="i4g-Uf-vGK" id="3gk-mV-yIy"/>
+                        <outlet property="greenButton" destination="ZYT-0P-STd" id="olZ-ig-1aW"/>
+                        <outlet property="redButton" destination="ybE-O3-W0I" id="Pls-HI-x2T"/>
+                        <outlet property="startButton" destination="pet-L3-qqI" id="IcL-Xo-b0C"/>
+                        <outlet property="yellowButton" destination="G1q-hQ-KpL" id="7bC-MQ-Aaq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
