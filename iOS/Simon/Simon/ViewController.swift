@@ -27,14 +27,46 @@ class ViewController: UIViewController {
   @IBOutlet weak var blueButton: UIButton!
   @IBOutlet weak var redButton: UIButton!
   
-  @IBAction func buttonTouched(_ sender: AnyObject) {
+  @IBAction func buttonTouched(_ sender: UIButton) {
+    //determine which button was touched by looking at its tag
+    let buttontag = sender.tag
+  
+    if let colorTouched = ButtonColor(rawValue: buttontag) {
+      if currentPlayer == .computer {
+        //Ignore touches while current player is computer
+        return
+      }
+      
+      if colorTouched == inputs[indexOfNextButtonToTouch] {
+        // human touched the current button
+        indexOfNextButtonToTouch += 1
+        
+        //determine if there are any more buttons left in the round
+        if indexOfNextButtonToTouch == inputs.count {
+          // human won the round
+          if advanceGame() == false {
+            //Player wins
+            playerWins()
+          }
+          indexOfNextButtonToTouch = 0
+        } else {
+          //There are more buttons in the round to touch, so keep waiting
+          //exercise
+        }
+      } else {
+        //human looses - the wrong button was touched
+        playerLooses()
+        indexOfNextButtonToTouch = 0
+        }
+      }
   }
   
   
   @IBOutlet weak var greenButton: UIButton!
   @IBOutlet weak var startButton: UIBarButtonItem!
-  @IBAction func startButtonClicked(_ sender: AnyObject) {
-    
+  @IBAction func startButtonClicked(_ sender: UIBarButtonItem) {
+    startNewGame()
+    sender.isEnabled = false // disables the start button
   }
   
   //Model related objects and properties
@@ -46,7 +78,7 @@ class ViewController: UIViewController {
   
   var soundPlayer = AVAudioPlayer()
   
-  func startGame() {
+  func startNewGame() {
     inputs = [ButtonColor]()
     _ = advanceGame()
   }
@@ -68,6 +100,44 @@ class ViewController: UIViewController {
     return result
   }
   
+  func playerWins() {
+    let alert = UIAlertController(title: "You Won!",
+                                  message: "Congratulations!",
+                                  preferredStyle: .alert)
+    //alert button - start new game
+    alert.addAction(UIAlertAction(title: "Play Again!",
+                                  style: .default,
+                                  handler: { action in
+                                    self.startNewGame()
+    }))
+    //alert button - OK
+    alert.addAction(UIAlertAction(title: "OK",
+                                  style: .default,
+                                  handler: {action in
+                                    self.startButton.isEnabled = true
+    }))
+    
+    self.present(alert, animated: true, completion: nil)
+  }
+  
+  func playerLooses() {
+    let alert = UIAlertController(title: "You Lose!",
+                                  message: "Sorry!",
+                                  preferredStyle: .alert)
+    //alert button - start new game
+    alert.addAction(UIAlertAction(title: "Play Again!",
+                                  style: .default,
+                                  handler: { action in
+                                    self.startNewGame()
+    }))
+    //alert button - OK
+    alert.addAction(UIAlertAction(title: "OK",
+                                  style: .default,
+                                  handler: {action in
+                                    self.startButton.isEnabled = true
+    }))
+  }
+  
   func play(sequence: Int, highlightTime: Double) {
     currentPlayer = .computer
     if sequence == inputs.count {
@@ -80,6 +150,34 @@ class ViewController: UIViewController {
     let highligtColor = UIColor.white
     
     //sounds here
+    var soundName: String
+    switch button {
+    case redButton:
+      soundName = "red"
+    case blueButton:
+      soundName = "blue"
+    case yellowButton:
+      soundName = "yellow"
+    case greenButton:
+      soundName = "green"
+    
+    default:
+      soundName = ""
+    }
+    
+    
+    let soundPath = Bundle.main.path(forResource: soundName, ofType: "aiff")
+    if let soundPath = soundPath {
+      let soundURL = NSURL.fileURL(withPath: soundPath)
+      do {
+        try soundPlayer = AVAudioPlayer(contentsOf: soundURL)
+        soundPlayer.prepareToPlay()
+        soundPlayer.play()
+      } catch {
+        print("SoundPlayer is not available")
+      }
+    }
+    
     
     UIView.animate(withDuration: highlightTime,
                    delay: 0.0,

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,7 +33,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EZc-aQ-Uco">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EZc-aQ-Uco">
                                 <frame key="frameInset" minX="62" minY="208" width="250" height="250"/>
                                 <subviews>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybE-O3-W0I">
@@ -70,14 +71,18 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="5lP-be-iko"/>
                                     <constraint firstAttribute="height" constant="250" id="Cg9-c1-g9V"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="250" id="WSf-0V-FDL"/>
                                     <constraint firstAttribute="width" constant="250" id="mYM-SZ-WQM"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="EZc-aQ-Uco" firstAttribute="top" secondItem="s04-5g-Wvb" secondAttribute="bottom" constant="50" id="0bt-jC-QEv"/>
                             <constraint firstItem="s04-5g-Wvb" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="3uF-AW-FZ7"/>
+                            <constraint firstItem="EZc-aQ-Uco" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="k8c-Dr-sJh"/>
                             <constraint firstAttribute="trailing" secondItem="s04-5g-Wvb" secondAttribute="trailing" id="oaU-3h-PdV"/>
                             <constraint firstItem="s04-5g-Wvb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="sI6-kd-EXa"/>
                         </constraints>

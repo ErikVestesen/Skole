@@ -12,6 +12,10 @@
 		8E252B531DD45A7300311835 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E252B511DD45A7300311835 /* Main.storyboard */; };
 		8E252B551DD45A7300311835 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E252B541DD45A7300311835 /* Assets.xcassets */; };
 		8E252B581DD45A7300311835 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E252B561DD45A7300311835 /* LaunchScreen.storyboard */; };
+		8E252B641DD4831300311835 /* blue.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 8E252B601DD4831300311835 /* blue.aiff */; };
+		8E252B651DD4831300311835 /* green.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 8E252B611DD4831300311835 /* green.aiff */; };
+		8E252B661DD4831300311835 /* red.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 8E252B621DD4831300311835 /* red.aiff */; };
+		8E252B671DD4831300311835 /* yellow.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 8E252B631DD4831300311835 /* yellow.aiff */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		8E252B541DD45A7300311835 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E252B571DD45A7300311835 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E252B591DD45A7400311835 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E252B601DD4831300311835 /* blue.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; name = blue.aiff; path = SimonSounds/blue.aiff; sourceTree = SOURCE_ROOT; };
+		8E252B611DD4831300311835 /* green.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; name = green.aiff; path = SimonSounds/green.aiff; sourceTree = SOURCE_ROOT; };
+		8E252B621DD4831300311835 /* red.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; name = red.aiff; path = SimonSounds/red.aiff; sourceTree = SOURCE_ROOT; };
+		8E252B631DD4831300311835 /* yellow.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; name = yellow.aiff; path = SimonSounds/yellow.aiff; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +48,7 @@
 			children = (
 				8E252B4C1DD45A7300311835 /* Simon */,
 				8E252B4B1DD45A7300311835 /* Products */,
+				8E252B5F1DD4831300311835 /* SimonSounds */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +63,7 @@
 		8E252B4C1DD45A7300311835 /* Simon */ = {
 			isa = PBXGroup;
 			children = (
+				8E252B681DD4854100311835 /* sounds */,
 				8E252B4D1DD45A7300311835 /* AppDelegate.swift */,
 				8E252B4F1DD45A7300311835 /* ViewController.swift */,
 				8E252B511DD45A7300311835 /* Main.storyboard */,
@@ -62,6 +72,24 @@
 				8E252B591DD45A7400311835 /* Info.plist */,
 			);
 			path = Simon;
+			sourceTree = "<group>";
+		};
+		8E252B5F1DD4831300311835 /* SimonSounds */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SimonSounds;
+			sourceTree = "<group>";
+		};
+		8E252B681DD4854100311835 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				8E252B601DD4831300311835 /* blue.aiff */,
+				8E252B611DD4831300311835 /* green.aiff */,
+				8E252B621DD4831300311835 /* red.aiff */,
+				8E252B631DD4831300311835 /* yellow.aiff */,
+			);
+			name = sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,9 +151,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E252B651DD4831300311835 /* green.aiff in Resources */,
 				8E252B581DD45A7300311835 /* LaunchScreen.storyboard in Resources */,
+				8E252B641DD4831300311835 /* blue.aiff in Resources */,
 				8E252B551DD45A7300311835 /* Assets.xcassets in Resources */,
 				8E252B531DD45A7300311835 /* Main.storyboard in Resources */,
+				8E252B671DD4831300311835 /* yellow.aiff in Resources */,
+				8E252B661DD4831300311835 /* red.aiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
