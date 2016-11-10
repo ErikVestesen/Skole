@@ -1,4 +1,7 @@
-/*
+---Opgave 1
+
+
+
 --Opgave 2
 --Giv alle de destinationer og uger hvor mindst x% af boliger er udlejet og x% af flysæder er optaget
 Drop procedure KravD1
@@ -21,7 +24,7 @@ go
 exec KravD1 0;
 
 
---Opgave 3
+---Opgave 3
 Drop procedure KravD2
 go
 Create procedure KravD2
@@ -33,7 +36,7 @@ group by fb.navn
 go
 exec KravD2
 
-*/
+
 ---Opgave 4
 --Opgave 4.1
 --View der returnerer meget data, og hvis en bolig ikke er udlejet, så skal den stå som værende ledig og antal personer = 0
@@ -70,9 +73,3 @@ begin
 	from inserted
 	where inserted.antalpersoner <= antalsæder.solgtepladser AND inserted.ugenr = antalsæder.ugenr and inserted.did = antalsæder.destination
 end
-
-
-select * from antalSæder
-select * from KravD3
-Update KravD3 set antalpersoner = 1 where ugenr = 29 and id = 1
-select * from antalSæder
