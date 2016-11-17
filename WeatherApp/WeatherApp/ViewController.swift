@@ -11,9 +11,9 @@ import MapKit
 
 class ViewController: UIViewController, MKMapViewDelegate, StateControllerDelegate {
     
-  @IBOutlet weak var lblHumidity: UILabel!
-  @IBOutlet weak var lblTemp: UILabel!
-  @IBOutlet weak var lblWeather: UILabel!
+    @IBOutlet weak var lblHumidity: UILabel!
+    @IBOutlet weak var lblTemp: UILabel!
+    @IBOutlet weak var lblWeather: UILabel!
     @IBOutlet weak var WeatherLocationMapView: MKMapView!
     var stateController: StateController?
     
