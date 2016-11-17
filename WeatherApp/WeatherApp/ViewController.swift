@@ -11,23 +11,29 @@ import MapKit
 
 class ViewController: UIViewController, MKMapViewDelegate, StateControllerDelegate {
     
+  @IBOutlet weak var lblHumidity: UILabel!
+  @IBOutlet weak var lblTemp: UILabel!
+  @IBOutlet weak var lblWeather: UILabel!
     @IBOutlet weak var WeatherLocationMapView: MKMapView!
     var stateController: StateController?
     
     func dataIsReady() {
             let weatherLocation = stateController?.weatherLocation
             let pin = MKPointAnnotation()
-            pin.coordinate = CLLocationCoordinate2DMake(CLLocation().coordinate.latitude, CLLocation().coordinate.longitude)
-            pin.title = (weatherLocation?.weatherDescription)! + (weatherLocation?.weatherMain)!
+            pin.coordinate = CLLocationCoordinate2DMake(56.17013, 10.19544)
+            pin.title = (weatherLocation?.weatherDescription)!
+        lblTemp.text = weatherLocation?.temp
+        lblHumidity.text = weatherLocation?.humidity
+        lblWeather.text = weatherLocation?.weatherMain
+      
         WeatherLocationMapView.addAnnotation(pin)
-
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         WeatherLocationMapView.delegate = self
-        
+        /*
         let locManager = CLLocationManager() // flyt til appDelegate?
         locManager.requestWhenInUseAuthorization()
         var currentLocation = CLLocation()
@@ -36,9 +42,13 @@ class ViewController: UIViewController, MKMapViewDelegate, StateControllerDelega
             CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways){
             
             currentLocation = locManager.location!
-            _ = JSONDownload(urlPath:"api.openweathermap.org/data/2.5/weather?lat=\(currentLocation.coordinate.latitude)&lon=\(currentLocation.coordinate.longitude)", delegate: stateController!)
+        */
+            //http://api.openweathermap.org/data/2.5/weather?lat=56.17013&lon=10.19544&APPID=ffb3eb29318bf8fe6c150d9b9f4b2157
+            //_ = JSONDownload(urlPath:"api.openweathermap.org/data/2.5/weather?lat=\(currentLocation.coordinate.latitude)&lon=\(currentLocation.coordinate.longitude)&APPID=ffb3eb29318bf8fe6c150d9b9f4b2157", delegate: stateController!)
+            _ = JSONDownload(urlPath:"http://api.openweathermap.org/data/2.5/weather?lat=56.17013&lon=10.19544&APPID=ffb3eb29318bf8fe6c150d9b9f4b2157", delegate: stateController!)
+          
             stateController?.delegate = self
-        }
+        //}
         
     }
 }

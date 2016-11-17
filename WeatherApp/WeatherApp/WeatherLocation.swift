@@ -11,9 +11,13 @@ import Foundation
 struct WeatherLocation {
     let weatherMain: String
     let weatherDescription: String
-    
-    init(weatherMain: String, weatherDescription: String) {
+    let temp: String
+    let humidity: String
+  
+    init(weatherMain: String, weatherDescription: String, temp: String, humidity: String) {
         self.weatherMain = weatherMain
         self.weatherDescription = weatherDescription
+        self.temp = temp
+        self.humidity = humidity
     }
 }
