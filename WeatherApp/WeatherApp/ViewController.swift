@@ -33,23 +33,10 @@ class ViewController: UIViewController, MKMapViewDelegate, StateControllerDelega
         super.viewDidLoad()
         
         WeatherLocationMapView.delegate = self
-        /*
-        let locManager = CLLocationManager() // flyt til appDelegate?
-        locManager.requestWhenInUseAuthorization()
-        var currentLocation = CLLocation()
+      
+        _ = JSONDownload(urlPath:"http://api.openweathermap.org/data/2.5/weather?lat=56.17013&lon=10.19544&APPID=ffb3eb29318bf8fe6c150d9b9f4b2157", delegate: stateController!)
+        stateController?.delegate = self
         
-        if( CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse ||
-            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways){
-            
-            currentLocation = locManager.location!
-        */
-            //http://api.openweathermap.org/data/2.5/weather?lat=56.17013&lon=10.19544&APPID=ffb3eb29318bf8fe6c150d9b9f4b2157
-            //_ = JSONDownload(urlPath:"api.openweathermap.org/data/2.5/weather?lat=\(currentLocation.coordinate.latitude)&lon=\(currentLocation.coordinate.longitude)&APPID=ffb3eb29318bf8fe6c150d9b9f4b2157", delegate: stateController!)
-            _ = JSONDownload(urlPath:"http://api.openweathermap.org/data/2.5/weather?lat=56.17013&lon=10.19544&APPID=ffb3eb29318bf8fe6c150d9b9f4b2157", delegate: stateController!)
-          
-            stateController?.delegate = self
-        //}
         
     }
 }
-

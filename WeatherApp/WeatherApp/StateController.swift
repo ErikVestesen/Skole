@@ -16,7 +16,8 @@ class StateController : JSONDownloadDelegate {
     
     func finishedDownloading(data: JSON) {
       if let weatherMain = data["weather"][0]["main"].string, let weatherDescription = data["weather"][0]["description"].string, let temp = data["main"]["temp"].double , let humidity = data["main"]["humidity"].double {
-        let weatherLocation = WeatherLocation(weatherMain: weatherMain, weatherDescription: weatherDescription, temp: temp.description, humidity: humidity.description)
+        let tempC = temp - 272.15 // Kelvin til Celsius
+        let weatherLocation = WeatherLocation(weatherMain: weatherMain, weatherDescription: weatherDescription, temp: tempC.description, humidity: humidity.description)
         self.weatherLocation = weatherLocation
         if self.weatherLocation != nil {
             delegate?.dataIsReady()
