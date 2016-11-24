@@ -14,6 +14,9 @@ class ViewController: UIViewController {
   @IBAction func datePickerDidSelectNewDate(_ sender: UIDatePicker) {
     let selectedDate = sender.date
     print("selected date \(selectedDate)")
+    
+    let delegate = UIApplication.shared.delegate as? AppDelegate
+    delegate?.scheduleNotification(at: selectedDate)
   }
 }
 
