@@ -51,7 +51,7 @@ namespace Opgave1WPF
             DataTable products = Service.getProducts(supplId);
           
             dataGrid.ItemsSource = products.DefaultView;
-            dataGrid.AutoGenerateColumns = true;
+            dataGrid.AutoGenerateColumns = false;
         }
 
         private void dataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
